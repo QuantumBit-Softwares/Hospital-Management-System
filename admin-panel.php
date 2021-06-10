@@ -231,6 +231,8 @@ function get_specs(){
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
       <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
       <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Set Location</a>
+      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Search Doctors Nearby</a>
       
     </div><br>
   </div>
@@ -294,6 +296,77 @@ function get_specs(){
          
             </div>
           </div>
+
+
+
+
+          <div class="col-sm-4" style="left: 5% ; margin-top:5%">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body">
+                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list fa-stack-1x fa-inverse"></i> </span>
+                      <h4 class="StepTitle" style="margin-top: 5%;"> Set Location</h4>
+                      <script>
+                        function clickDiv(id) {
+                          document.querySelector(id).click();
+                        }
+                      </script>                      
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+
+
+                      <p class="links cl-effect-1">
+                        <a href="#list-loc" onclick="clickDiv('#list-loc-list')">
+                          Set latitude and longitude in Map
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+
+                <div class="col-sm-4" style="left: 45% ; margin-top:-16%">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body">
+                      <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list fa-stack-1x fa-inverse"></i> </span>
+                      <h4 class="StepTitle" style="margin-top: 5%;"> Nearby Doctors</h4>
+                      <script>
+                        function clickDiv(id) {
+                          document.querySelector(id).click();
+                        }
+                      </script>                      
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+                      <!--location -->
+
+
+                      <p class="links cl-effect-1">
+                        <a href="#list-loc" onclick="clickDiv('#list-loc-list')">
+                          Search for Available Doctors Nearby
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
 
 
 

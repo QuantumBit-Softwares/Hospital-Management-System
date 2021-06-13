@@ -155,7 +155,9 @@ CREATE TABLE `patreg` (
   `email` varchar(30) NOT NULL,
   `contact` varchar(10) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `cpassword` varchar(30) NOT NULL
+  `cpassword` varchar(30) NOT NULL,
+  `lat` float(10) NOT NULL,
+  `lng` float(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

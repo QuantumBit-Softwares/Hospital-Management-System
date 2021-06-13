@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--Script--> 
+<script type="text/javascript">
+
+var doct_lat = 48.8567;
+var doct_lng = 2.3508;
+
+//pass another value refresh
+
+//var distance = distance(51.5112139, -0.119824, 48.8567, 2.3508, 'K');
+var pat_lat = 51.5112139;
+var pat_lng = -0.119824;
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var radlon1 = Math.PI * lon1/180;
+        var radlon2 = Math.PI * lon2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit=="K") { dist = dist * 1.609344 };
+        if (unit=="N") { dist = dist * 0.8684 };
+        return dist;
+}
+//calling function
+var distance = distance(doct_lat, doct_lng, pat_lat, pat_lng, 'K');
+
+//display the value
+document.write(distance);
+</script>
+
+</body>
+</html>

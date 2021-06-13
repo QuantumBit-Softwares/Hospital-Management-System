@@ -2,6 +2,9 @@
 <?php 
 include('func.php');  
 include('newfunc.php');
+//include('distance_in_js1.php');
+
+
 $con=mysqli_connect("localhost","root","","myhmsdb");
 
 
@@ -231,8 +234,8 @@ function get_specs(){
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
       <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
       <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Set Location</a>
-      <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Search Doctors Nearby</a>
+      <a class="list-group-item list-group-item-action" href="#list-loc" id="list-loc-list" role="tab" data-toggle="list" aria-controls="home">Set Location</a>
+      <a class="list-group-item list-group-item-action" href="#list-distances" id="list-distances-list" role="tab" data-toggle="list" aria-controls="home">Search Doctors Nearby</a>
       
     </div><br>
   </div>
@@ -294,13 +297,8 @@ function get_specs(){
                 </div>
                 
          
-            </div>
-          </div>
-
-
-
-
-          <div class="col-sm-4" style="left: 5% ; margin-top:5%">
+         
+                <div class="col-sm-4" style="left: 5% ; margin-top:5%">
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body">
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list fa-stack-1x fa-inverse"></i> </span>
@@ -359,13 +357,145 @@ function get_specs(){
 
 
                       <p class="links cl-effect-1">
-                        <a href="#list-loc" onclick="clickDiv('#list-loc-list')">
+                        <a href="#list-loc" onclick="clickDiv('#list-distances-list')">
                           Search for Available Doctors Nearby
                         </a>
                       </p>
                     </div>
                   </div>
                 </div>
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+      <div class="tab-pane fade" id="list-loc" role="tabpanel" aria-labelledby="list-loc-list">
+        <table class="table table-hover">
+          <p> Set location </p>
+            <a href="setlocation1.php">Click Here to set your location</a>
+        </table>
+      </div>
+
+
+
+
+<?php
+include('distance_in_js1.php');
+?>
+<!--SEARCH FOR AVAILABLE DOCTORS DISTANCES-->
+      <div class="tab-pane fade" id="list-distances" role="tabpanel" aria-labelledby="list-distances-list">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Doctor Name</th>
+              <th scope="col">Distance</th>
+              <th scope="col">Get Direction</th>
+              <th scope="col">RULE</th>
+              <th scope="col">Contact Options</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <script>
+            let counter = 0;
+            let counterplus = 0;
+            </script>
+
+            <?php 
+
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              //$query = "select doctor,ID,appdate,apptime,disease,allergy,prescription from prestb where pid='$pid';";
+              $query = "select username, lng from doctb";
+              $result = mysqli_query($con,$query);
+              if(!$result){
+                echo mysqli_error($con);
+              }
+
+              //For loop while doctor is available in database
+              
+
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+                <tr>
+                  <td><?php echo $row['username'];?></td>
+                
+
+                 <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(distance_km[counter]);
+                  document.write(" KM")
+                  counter++;
+                  </script>
+                  </td>
+
+
+
+                  <td>
+                    <form method="get">
+                    <!-- <a href="admin-panel.php?ID=" 
+                        onClick=""
+                        title="Pay Bill" tooltip-placement="top" tooltip="Remove"><button class="btn btn-success">Pay</button>
+                        </a></td> -->
+
+                        <a href="admin-panel.php?ID=<?php echo $row['ID']?>">
+                        <input type ="hidden" name="ID" value="<?php echo $row['ID']?>"/>
+                        <input type = "submit" onclick="alert('Bill Paid Successfully');" name ="generate_bill" class = "btn btn-success" value="paybill"/>
+                        </a>
+                        </td>
+                        </form>
+                       
+                       
+                       
+                       
+                       
+                        <td>
+
+
+
+
+                                     
+                    <script type="text/javascript">
+                    function redirect()
+                    {
+                    window.location(url);
+                    }
+
+                      var url = "https://www.google.com/maps/dir/?api=1&origin="+doc_lat_js[counterplus]+","+doc_lng_js[counterplus]+"&destination="+pat_lat_js+","+pat_lng_js; 
+                      //var url = doc_lat_js[counterplus]+","+doc_lng_js[counterplus];
+                      //document.write( url);
+                      counterplus = counterplus + 1;
+                      document.write('<a href="' + url + '">Get Direction</a>');
+                    </script>
+                 <!--  <a href="#"> <button class="btn btn-success">Success</button><a href="#">
+                        Get direction MAP BOX API
+                    <form action="javascript:window.location.href=(url);" method="POST"   >
+                    <input type = "submit" onclick="redirect()" class = "btn btn-success" value="Get Direction" /> -->
+                        </td>
+
+                        </form>
+              
+
+
+
+
+                        
+                </tr>
+              <?php }//end of while loop
+
+
+              ?>
+          </tbody>
+        </table>
+  <br>
+</div>
 
 
 
@@ -522,6 +652,8 @@ function get_specs(){
         </div><br>
       </div>
       
+
+      
 <div class="tab-pane fade" id="app-hist" role="tabpanel" aria-labelledby="list-pat-list">
         
               <table class="table table-hover">
@@ -658,6 +790,9 @@ function get_specs(){
               </table>
         <br>
       </div>
+
+
+
 
 
 

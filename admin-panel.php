@@ -16,7 +16,7 @@ $con=mysqli_connect("localhost","root","","myhmsdb");
   $lname = $_SESSION['lname'];
   $contact = $_SESSION['contact'];
 
-
+echo $pid;
 
 if(isset($_POST['app-submit']))
 {

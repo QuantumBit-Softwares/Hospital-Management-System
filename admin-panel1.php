@@ -20,6 +20,7 @@ if(isset($_POST['docsub']))
   if($result)
     {
       echo "<script>alert('Doctor added successfully!');</script>";
+      echo '<script>window.location.href = "http://localhost/Hospital-Management-System-master/admin-panel1.php";</script>';
   }
 }
 
@@ -576,6 +577,7 @@ if(isset($_POST['docsub1']))
           <input type="submit" name="docsub1" value="Delete Doctor" class="btn btn-primary" onclick="confirm('do you really want to delete?')">
         </form>
       </div>
+
 
 
        <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>

@@ -13,15 +13,13 @@ if(isset($_POST['docsub']))
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
   $dgender = $_POST['dgender'];
-
+  $docContact = $_POST['docContact'];
+  $docAddress = $_POST['docAddress'];
   $query="insert into doctb(username,password,email,spec,docFees,gender)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender')";
- // $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$dpassword','$demail','$spec','$docFees')";
   $result=mysqli_query($con,$query);
   if($result)
     {
       echo "<script>alert('Doctor added successfully!');</script>";
-     
-
   }
 }
 
@@ -508,33 +506,42 @@ if(isset($_POST['docsub1']))
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <form class="form-group" method="post" action="admin-panel1.php">
           <div class="row">
-                  <div class="col-md-4"><label>Doctor Name:</label></div>
-                  <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
-                  <div class="col-md-4"><label>Specialization:</label></div>
-                  <div class="col-md-8">
-                   <select name="special" class="form-control" id="special" required="required">
-                      <option value="head" name="spec" disabled selected>Select Specialization</option>
-                      <option value="General" name="spec">General</option>
-                      <option value="Cardiologist" name="spec">Cardiologist</option>
-                      <option value="Neurologist" name="spec">Neurologist</option>
-                      <option value="Pediatrician" name="spec">Pediatrician</option>
-                    </select>
-                    </div><br><br>
-                  <div class="col-md-4"><label>Email ID:</label></div>
-                  <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
-                  <div class="col-md-4"><label>Password:</label></div>
-                  <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
-                  <div class="col-md-4"><label>Confirm Password:</label></div>
-                  <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
-                   
-                  
-                  <div class="col-md-4"><label>Consultancy Fees:</label></div>
-                  <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
-                  
-                  
-                  
-                  <div class="form-group">
-                  <br>
+          <div class="col-md-4"><label>Your Name:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
+                                    
+                                    <div class="col-md-4"><label>Contact #:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docContact" required></div><br><br>
+
+                                    <div class="col-md-4"><label>Address:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docAddress" required></div><br><br>
+
+                                    
+
+
+                                    <div class="col-md-4"><label>Specialization:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="special" class="form-control" id="special" required="required">
+                                        <option value="head" name="spec" disabled selected>Select Specialization</option>
+                                        <option value="General" name="spec">General</option>
+                                        <option value="Cardiologist" name="spec">Cardiologist</option>
+                                        <option value="Neurologist" name="spec">Neurologist</option>
+                                        <option value="Pediatrician" name="spec">Pediatrician</option>
+                                        </select>
+                                        </div><br><br>
+                                    <div class="col-md-4"><label>Email ID:</label></div>
+                                    
+                                    <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
+                                    <div class="col-md-4"><label>Password:</label></div>
+                                    <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
+                                    <div class="col-md-4"><label>Confirm Password:</label></div>
+
+                                    <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
+                                    <div class="col-md-4"><label>Consultancy Fees:</label></div>
+
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+                                       
+                                       
+                                        
                                             <div class="maxl">
                                                 <label class="radio inline"> 
                                                     <input type="radio" name="dgender" value="Male" checked>

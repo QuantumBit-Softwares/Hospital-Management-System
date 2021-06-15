@@ -52,7 +52,11 @@ if(isset($_POST['docsub']))
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
   $dgender = $_POST['dgender'];
-  $query="insert into doctb(username,password,email,spec,docFees,dgender)values('$doctor','$dpassword','$demail','$spec','$docFees',$dgender)";
+  $docContact = $_POST['docContact'];
+  $docAddress = $_POST['docAddress'];
+  //$query="insert into doctb(username,dgender, password,email,spec,docFees,docContact, docAddress) values ('$doctor',$dgender, '$dpassword','$demail','$spec','$docFees', '$docContact', '$docAddress')";
+  //$query="insert into doctb(username,dgender, password,email,spec,docFees) values ('$doctor',$dgender, '$dpassword','$demail','$spec','$docFees')";
+  $query="insert into doctb(username,password,email,spec,docFees,gender)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender')";
   $result=mysqli_query($con,$query);
   if($result)
     {
@@ -184,7 +188,7 @@ if(isset($_POST['docsub']))
                             
 
 
-
+<!--DOCTOR-->
 
                             <div class="tab-pane fade show" id="home1" role="tabpanel" aria-labelledby="home1-tab">
                                 <h3  class="register-heading">Register as Doctor</h3>
@@ -194,6 +198,16 @@ if(isset($_POST['docsub']))
                                 <div class="row">
                                     <div class="col-md-4"><label>Your Name:</label></div>
                                     <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
+                                    
+                                    <div class="col-md-4"><label>Contact #:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docContact" required></div><br><br>
+
+                                    <div class="col-md-4"><label>Address:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docAddress" required></div><br><br>
+
+                                    
+
+
                                     <div class="col-md-4"><label>Specialization:</label></div>
                                     <div class="col-md-8">
                                     <select name="special" class="form-control" id="special" required="required">

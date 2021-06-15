@@ -120,9 +120,11 @@ CREATE TABLE `doctb` (
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `spec` varchar(50) NOT NULL,
-  `docFees` int(10) NOT NULL,
+  `docFees` BIGINT(10) NOT NULL,
   `lat` float(10) NOT NULL,
-  `lng` float(10) NOT NULL
+  `lng` float(10) NOT NULL,
+  `docContact` BIGINT(20) NOT NULL,
+  `docAddress` varchar(100) NOT NULL
  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -130,15 +132,15 @@ CREATE TABLE `doctb` (
 -- Dumping data for table `doctb`
 --
 
-INSERT INTO `doctb` (`username`, `gender`, `password`, `email`, `spec`, `docFees`, `lat`, `lng`) VALUES
-('ashok', 'Male', 'ashok123', 'ashok@gmail.com', 'General', 500, 14.5995, 120.9842),
-('arun', 'Male','arun123', 'arun@gmail.com', 'Cardiologist', 600,  14.5995, 120.9842),
-('Dinesh', 'Male','dinesh123', 'dinesh@gmail.com', 'General', 700,  14.5995, 120.9842),
-('Ganesh', 'Male','ganesh123', 'ganesh@gmail.com', 'Pediatrician', 550,  14.5995, 120.9842),
-('Kumar', 'Male','kumar123', 'kumar@gmail.com', 'Pediatrician', 800, 14.5995, 120.9842),
-('Amit', 'Female','amit123', 'amit@gmail.com', 'Cardiologist', 1000,  14.5995, 120.9842),
-('Abbis','Female', 'abbis123', 'abbis@gmail.com', 'Neurologist', 1500, 14.5995, 120.9842),
-('Tiwary', 'Female','tiwary123', 'tiwary@gmail.com', 'Pediatrician', 450,  14.5995, 120.9842);
+INSERT INTO `doctb` (`username`, `gender`, `password`, `email`, `spec`, `docFees`, `lat`, `lng`, `docContact`, `docAddress`) VALUES
+('ashok', 'Male', 'ashok123', 'ashok@gmail.com', 'General', 500, 14.5995, 120.9842, 09123456789, 'Manila' ),
+('arun', 'Male','arun123', 'arun@gmail.com', 'Cardiologist', 600,  14.5995, 120.9842, 08123456789, 'Tondo'),
+('Dinesh', 'Male','dinesh123', 'dinesh@gmail.com', 'General', 700,  14.5995, 120.9842, 02882223223, 'Zambales'),
+('Ganesh', 'Male','ganesh123', 'ganesh@gmail.com', 'Pediatrician', 550,  14.5995, 120.9842, 07123456789, 'Clark'),
+('Kumar', 'Male','kumar123', 'kumar@gmail.com', 'Pediatrician', 800, 14.5995, 120.9842, 19123456789, 'Pampanga'),
+('Amit', 'Female','amit123', 'amit@gmail.com', 'Cardiologist', 1000,  14.5995, 120.9842, 39123456789, 'Clark City'),
+('Abbis','Female', 'abbis123', 'abbis@gmail.com', 'Neurologist', 1500, 14.5995, 120.9842, 19123456789, 'Clark Avenue'),
+('Tiwary', 'Female','tiwary123', 'tiwary@gmail.com', 'Pediatrician', 450,  14.5995, 120.9842, 33123456789, 'Clark New York');
 
 
 -- --------------------------------------------------------

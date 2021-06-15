@@ -12,9 +12,9 @@ if(isset($_POST['docsub']))
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
   $dgender = $_POST['dgender'];
-
-
-  $query="insert into doctb(username,password,email,spec,docFees,gender)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender')";
+  $docAddress = $_POST['docAddress'];
+$docContact = $_POST['docContact'];
+  $query="insert into doctb(username,password,email,spec,docFees,gender,docContact, docAddress)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender','$docContact', '$docAddress')";
  // $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$dpassword','$demail','$spec','$docFees')";
   $result=mysqli_query($con,$query);
   if($result)

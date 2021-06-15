@@ -22,6 +22,8 @@ if(isset($_POST['patsub1'])){
         $_SESSION['contact'] = $_POST['contact'];
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['patAddress'] = $_POST['patAddress'];
+        echo "<script>alert('You registered successfully!');</script>";
+        echo "<script>window.location.href = 'http://localhost/Hospital-Management-System-master/index.php';</script>";
         //header("Location:admin-panel.php");
     } 
 
@@ -29,13 +31,15 @@ if(isset($_POST['patsub1'])){
     $result1 = mysqli_query($con,$query1);
     if($result1){
       $_SESSION['pid'] = $row['pid'];
-      header("Location:admin-panel.php");
+      //header("Location:index.php");
     }
 
   }
   else{
     header("Location:error1.php");
   }
+
+  
 }
 
 

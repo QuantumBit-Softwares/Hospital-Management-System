@@ -4,6 +4,7 @@ $con=mysqli_connect("localhost","root","","myhmsdb");
 
 include('newfunc.php');
 
+
 if(isset($_POST['docsub']))
 {
   $doctor=$_POST['doctor'];
@@ -11,11 +12,16 @@ if(isset($_POST['docsub']))
   $demail=$_POST['demail'];
   $spec=$_POST['special'];
   $docFees=$_POST['docFees'];
-  $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$dpassword','$demail','$spec','$docFees')";
+  $dgender = $_POST['dgender'];
+
+  $query="insert into doctb(username,password,email,spec,docFees,gender)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender')";
+ // $query="insert into doctb(username,password,email,spec,docFees)values('$doctor','$dpassword','$demail','$spec','$docFees')";
   $result=mysqli_query($con,$query);
   if($result)
     {
       echo "<script>alert('Doctor added successfully!');</script>";
+     
+
   }
 }
 
@@ -494,6 +500,11 @@ if(isset($_POST['docsub1']))
 
 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
 
+
+
+
+
+
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <form class="form-group" method="post" action="admin-panel1.php">
           <div class="row">
@@ -519,10 +530,33 @@ if(isset($_POST['docsub1']))
                   
                   <div class="col-md-4"><label>Consultancy Fees:</label></div>
                   <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+                  
+                  
+                  
+                  <div class="form-group">
+                  <br>
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="dgender" value="Male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="dgender" value="Female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+
+                                            <br>
+
                 </div>
           <input type="submit" name="docsub" value="Add Doctor" class="btn btn-primary">
         </form>
       </div>
+
+
+
+
+
 
       <div class="tab-pane fade" id="list-settings1" role="tabpanel" aria-labelledby="list-settings1-list">
         <form class="form-group" method="post" action="admin-panel1.php">

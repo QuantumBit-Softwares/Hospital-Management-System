@@ -116,30 +116,30 @@ INSERT INTO `contact` (`name`, `email`, `contact`, `message`) VALUES
 
 CREATE TABLE `doctb` (
   `username` varchar(50) NOT NULL,
+   `gender` varchar(10) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `spec` varchar(50) NOT NULL,
   `docFees` int(10) NOT NULL,
   `lat` float(10) NOT NULL,
   `lng` float(10) NOT NULL
+ 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `doctb`
 --
 
-INSERT INTO `doctb` (`username`, `password`, `email`, `spec`, `docFees`) VALUES
-('ashok', 'ashok123', 'ashok@gmail.com', 'General', 500),
-('arun', 'arun123', 'arun@gmail.com', 'Cardiologist', 600),
-('Dinesh', 'dinesh123', 'dinesh@gmail.com', 'General', 700),
-('Ganesh', 'ganesh123', 'ganesh@gmail.com', 'Pediatrician', 550),
-('Kumar', 'kumar123', 'kumar@gmail.com', 'Pediatrician', 800),
-('Amit', 'amit123', 'amit@gmail.com', 'Cardiologist', 1000),
-('Abbis', 'abbis123', 'abbis@gmail.com', 'Neurologist', 1500),
-('Tiwary', 'tiwary123', 'tiwary@gmail.com', 'Pediatrician', 450);
+INSERT INTO `doctb` (`username`, `gender`, `password`, `email`, `spec`, `docFees`, `lat`, `lng`) VALUES
+('ashok', 'Male', 'ashok123', 'ashok@gmail.com', 'General', 500, 14.5995, 120.9842),
+('arun', 'Male','arun123', 'arun@gmail.com', 'Cardiologist', 600,  14.5995, 120.9842),
+('Dinesh', 'Male','dinesh123', 'dinesh@gmail.com', 'General', 700,  14.5995, 120.9842),
+('Ganesh', 'Male','ganesh123', 'ganesh@gmail.com', 'Pediatrician', 550,  14.5995, 120.9842),
+('Kumar', 'Male','kumar123', 'kumar@gmail.com', 'Pediatrician', 800, 14.5995, 120.9842),
+('Amit', 'Female','amit123', 'amit@gmail.com', 'Cardiologist', 1000,  14.5995, 120.9842),
+('Abbis','Female', 'abbis123', 'abbis@gmail.com', 'Neurologist', 1500, 14.5995, 120.9842),
+('Tiwary', 'Female','tiwary123', 'tiwary@gmail.com', 'Pediatrician', 450,  14.5995, 120.9842);
 
-INSERT INTO `doctb` (`lat`, `lng`) VALUES
-(240, 14);
 
 -- --------------------------------------------------------
 

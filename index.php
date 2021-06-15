@@ -149,7 +149,15 @@ if(isset($_POST['docsub']))
                                         <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Password *" id="password" name="password" onkeyup='check();' required/>
                                         </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  placeholder="Your Contact No. *" name="patContact"  onkeydown="return alphaOnly(event);" required/>
+                                        </div>
                                         
+
+                                        
+
+
                                         <div class="form-group">
                                             <div class="maxl">
                                                 <label class="radio inline"> 
@@ -164,6 +172,9 @@ if(isset($_POST['docsub']))
                                             <a href="index1.php">Already have an account? Login</a>
                                         </div>
                                     </div>
+
+
+
                                 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -175,6 +186,9 @@ if(isset($_POST['docsub']))
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control"  id="cpassword" placeholder="Confirm Password *" name="cpassword"  onkeyup='check();' required/><span id='message'></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  placeholder="Your Address *" name="patAddress"  onkeydown="return alphaOnly(event);" required/>
                                         </div>
 
 

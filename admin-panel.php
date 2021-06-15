@@ -394,9 +394,9 @@ include('distance_in_js1.php');
             <tr>
               <th scope="col">Doctor Name</th>
               <th scope="col">Distance</th>
+             
               <th scope="col">Get Direction</th>
-              <th scope="col">RULE</th>
-              <th scope="col">Contact Options</th>
+              <th scope="col">Book Now</th>
             </tr>
           </thead>
           <tbody>
@@ -437,20 +437,20 @@ include('distance_in_js1.php');
                   </td>
 
 
-
+ <!--
                   <td>
                     <form method="get">
-                    <!-- <a href="admin-panel.php?ID=" 
+                    <a href="admin-panel.php?ID=" 
                         onClick=""
                         title="Pay Bill" tooltip-placement="top" tooltip="Remove"><button class="btn btn-success">Pay</button>
-                        </a></td> -->
+                        </a></td> 
 
                         <a href="admin-panel.php?ID=<?php echo $row['ID']?>">
                         <input type ="hidden" name="ID" value="<?php echo $row['ID']?>"/>
                         <input type = "submit" onclick="alert('Bill Paid Successfully');" name ="generate_bill" class = "btn btn-success" value="paybill"/>
                         </a>
                         </td>
-                        </form>
+                        </form>-->
                        
                        
                        
@@ -483,7 +483,12 @@ include('distance_in_js1.php');
                         </form>
               
 
+<td>
+<form action="https://hospitalnggroup7.com", target = "_blank" >
 
+    <input type = "submit"  class = "btn btn-success" value="Book Now" /> 
+</form>
+</td>
 
 
                         

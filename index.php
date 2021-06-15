@@ -150,9 +150,7 @@ if(isset($_POST['docsub']))
                                             <input type="password" class="form-control" placeholder="Password *" id="password" name="password" onkeyup='check();' required/>
                                         </div>
 
-                                        <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="Your Contact No. *" name="patContact"  onkeydown="return alphaOnly(event);" required/>
-                                        </div>
+                                        
                                         
 
                                         

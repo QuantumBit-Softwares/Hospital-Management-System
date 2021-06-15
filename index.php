@@ -85,17 +85,33 @@ function checklen()
                     </div>
                     <div class="col-md-9 register-right" style="margin-top: 40px;left: 80px;">
                         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist" style="width: 40%;">
+                            
+                            
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Patient</a>
                             </li>
+
+
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Doctor</a>
+                                <a class="nav-link" id="home1-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true">Doctor</a>
                             </li>
+
+
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Receptionist</a>
                             </li>
                         </ul>
+
+
+
+
+
+
+
+
                         <div class="tab-content" id="myTabContent">
+
+
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Register as Patient</h3>
                                 <form method="post" action="func2.php">
@@ -138,6 +154,8 @@ function checklen()
                                         <div class="form-group">
                                             <input type="password" class="form-control"  id="cpassword" placeholder="Confirm Password *" name="cpassword"  onkeyup='check();' required/><span id='message'></span>
                                         </div>
+
+
                                         <input type="submit" class="btnRegister" name="patsub1" onclick="return checklen();" value="Register"/>
                                     </div>
 
@@ -146,6 +164,79 @@ function checklen()
                             </div>
 
                             
+
+
+
+
+                            <div class="tab-pane fade show" id="home1" role="tabpanel" aria-labelledby="home1-tab">
+                                <h3  class="register-heading">Register as Doctor</h3>
+                                <form method="post" action="func1.php">
+                                <div class="row register-form">
+
+                                <div class="row">
+                                    <div class="col-md-4"><label>Your Name:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
+                                    <div class="col-md-4"><label>Specialization:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="special" class="form-control" id="special" required="required">
+                                        <option value="head" name="spec" disabled selected>Select Specialization</option>
+                                        <option value="General" name="spec">General</option>
+                                        <option value="Cardiologist" name="spec">Cardiologist</option>
+                                        <option value="Neurologist" name="spec">Neurologist</option>
+                                        <option value="Pediatrician" name="spec">Pediatrician</option>
+                                        </select>
+                                        </div><br><br>
+                                    <div class="col-md-4"><label>Email ID:</label></div>
+                                    <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
+                                    <div class="col-md-4"><label>Password:</label></div>
+                                    <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
+                                    <div class="col-md-4"><label>Confirm Password:</label></div>
+                                    <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
+
+                                    <div class="col-md-4"><label>Consultancy Fees:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+                                    
+
+                                    
+                                        
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="Male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="Female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+
+                                            <br>
+                                            
+                                            <input type="submit" name="docsub" value="Register" class="btn btn-primary">
+
+                                            <a href="index1.php">Already have an account?</a>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </form>
+                            </div>
+
+                           
+
+
+
+
+
+
+
+
+
+
+
+
                             <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3  class="register-heading">Login as Doctor</h3>
                                 <form method="post" action="func1.php">
@@ -155,6 +246,7 @@ function checklen()
                                             <input type="text" class="form-control" placeholder="User Name *" name="username3" onkeydown="return alphaOnly(event);" required/>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="password" class="form-control" placeholder="Password *" name="password3" required/>
@@ -165,6 +257,17 @@ function checklen()
                                 </div>
                             </form>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
                             <div class="tab-pane fade show" id="admin" role="tabpanel" aria-labelledby="profile-tab">

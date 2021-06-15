@@ -43,6 +43,24 @@ function checklen()
   }  
 }
 
+
+if(isset($_POST['docsub']))
+{
+  $doctor=$_POST['doctor'];
+  $dpassword=$_POST['dpassword'];
+  $demail=$_POST['demail'];
+  $spec=$_POST['special'];
+  $docFees=$_POST['docFees'];
+  $dgender = $_POST['dgender'];
+  $query="insert into doctb(username,password,email,spec,docFees,dgender)values('$doctor','$dpassword','$demail','$spec','$docFees',$dgender)";
+  $result=mysqli_query($con,$query);
+  if($result)
+    {
+      echo "<script>alert('Doctor added successfully!');</script>";
+  }
+}
+
+
 </script>
 
 </head>
@@ -139,7 +157,7 @@ function checklen()
                                                     <span>Female </span> 
                                                 </label>
                                             </div>
-                                            <a href="index1.php">Already have an account?</a>
+                                            <a href="index1.php">Already have an account? Login</a>
                                         </div>
                                     </div>
                                 
@@ -170,7 +188,7 @@ function checklen()
 
                             <div class="tab-pane fade show" id="home1" role="tabpanel" aria-labelledby="home1-tab">
                                 <h3  class="register-heading">Register as Doctor</h3>
-                                <form method="post" action="func1.php">
+                                <form method="post" action="admin-panel2.php">
                                 <div class="row register-form">
 
                                 <div class="row">
@@ -187,26 +205,26 @@ function checklen()
                                         </select>
                                         </div><br><br>
                                     <div class="col-md-4"><label>Email ID:</label></div>
+                                    
                                     <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
                                     <div class="col-md-4"><label>Password:</label></div>
                                     <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
                                     <div class="col-md-4"><label>Confirm Password:</label></div>
+
                                     <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
-
                                     <div class="col-md-4"><label>Consultancy Fees:</label></div>
-                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
-                                    
 
-                                    
-                                        
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+                                       
+                                       
                                         <div class="form-group">
                                             <div class="maxl">
                                                 <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="Male" checked>
+                                                    <input type="radio" name="dgender" value="Male" checked>
                                                     <span> Male </span> 
                                                 </label>
                                                 <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="Female">
+                                                    <input type="radio" name="dgender" value="Female">
                                                     <span>Female </span> 
                                                 </label>
                                             </div>
@@ -215,13 +233,18 @@ function checklen()
                                             
                                             <input type="submit" name="docsub" value="Register" class="btn btn-primary">
 
-                                            <a href="index1.php">Already have an account?</a>
+                                            <a href="index2.php">Already have an account? Login</a>
                                         </div>
                                     </div>
                                     
 
                                 </div>
                             </form>
+
+
+
+
+
                             </div>
 
                            
@@ -237,26 +260,6 @@ function checklen()
 
 
 
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3  class="register-heading">Login as Doctor</h3>
-                                <form method="post" action="func1.php">
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="User Name *" name="username3" onkeydown="return alphaOnly(event);" required/>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" name="password3" required/>
-                                        </div>
-                                        
-                                        <input type="submit" class="btnRegister" name="docsub1" value="Login"/>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
 
 
 

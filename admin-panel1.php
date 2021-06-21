@@ -249,6 +249,72 @@ if(isset($_POST['docsub1']))
       
                 
       
+<!-- Preparing the data
+SQL to PHP
+PHP to JAVA
+-->
+
+<?php 
+ $query = "select  username, docFees from doctb";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+      $username[] = $row["username"];
+      $docFees[] = $row["docFees"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    echo  $username[$i] .  "<br />";
+    echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+
+<hr size="8" width="90%" color="red">  
+<!--Assigning php array to js array -->
+
+<script>
+
+var doc_lng_js = <?php echo json_encode($doc_lng); ?>;
+
+
+ 
+
+
+document.write("<br>" + "<br>" + "Doctor lng, you have no js data that u can access by index (: + '<br>' ");
+ for(let i = 0; i < doc_lng_js.length; i++){ 
+    document.write(doc_lng_js[i]);
+    document.write("<br>");
+    
+    }
+
+
+
+</script>
+
+
 
 
 
@@ -265,22 +331,36 @@ if(isset($_POST['docsub1']))
         <!--Alter later to search by 7 criteria-->
         <div class="col-md-4"><label>Search by:</label></div>
                                     <div class="col-md-8">
-                                    <select name="filtering" class="form-control" id="filtering" required="required">
+                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
                                         <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="Doctor Name" name="username">Doctor Name</option>
-                                        <option value="Specialization" name="spec">Specialization</option>
-                                        <option value="Email" name="email">Email</option>
-                                        <option value="Password" name="password">Password</option>
-                                        <option value="Fees" name="fees">Fees</option>
-                                        <option value="Gender" name="gender">Gender</option>
-                                        <option value="Contact" name="docContact">Contact</option>
-                                        <option value="Address" name="docAddress">Address</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="spec" name="spec">Specialization</option>
+                                        <option value="email" name="email">Email</option>
+                                        <option value="password" name="password">Password</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        <option value="gender" name="gender">Gender</option>
+                                        <option value="docContact" name="docContact">Contact</option>
+                                        <option value="docAddress" name="docAddress">Address</option>
                                         </select>
                                         </div><br><br>
-        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter here" class = "form-control"></div>
+        <div class="col-md-10"><input type="text" name="admin-query-doc" placeholder="Enter here" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
-    </div>
+    </div><br>
+
+    <!--Sort by -->
+    <div class="col-md-4"><label>Sort by:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
+                                        <option value="head"  disabled selected>Filter Sort by</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        </select>
+                                        </div>
+        <br><div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div></div>
+      </form>
+    </div><br>
+
 
               <table class="table table-hover">
                 <thead>

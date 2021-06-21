@@ -261,10 +261,27 @@ if(isset($_POST['docsub1']))
               <div class="col-md-8">
       <form class="form-group" action="doctorsearch.php" method="post">
         <div class="row">
-        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
+
+        <!--Alter later to search by 7 criteria-->
+        <div class="col-md-4"><label>Search by:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="filtering" class="form-control" id="filtering" required="required">
+                                        <option value="head"  disabled selected>Filter Search by</option>
+                                        <option value="Doctor Name" name="username">Doctor Name</option>
+                                        <option value="Specialization" name="spec">Specialization</option>
+                                        <option value="Email" name="email">Email</option>
+                                        <option value="Password" name="password">Password</option>
+                                        <option value="Fees" name="fees">Fees</option>
+                                        <option value="Gender" name="gender">Gender</option>
+                                        <option value="Contact" name="docContact">Contact</option>
+                                        <option value="Address" name="docAddress">Address</option>
+                                        </select>
+                                        </div><br><br>
+        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter here" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
     </div>
+
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -273,6 +290,9 @@ if(isset($_POST['docsub1']))
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">Fees</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -287,6 +307,10 @@ if(isset($_POST['docsub1']))
                       $email = $row['email'];
                       $password = $row['password'];
                       $docFees = $row['docFees'];
+                      $gender = $row['gender'];
+                      $docContact = $row['docContact'];
+                      $docAddress = $row['docAddress'];
+
                       
                       echo "<tr>
                         <td>$username</td>
@@ -294,6 +318,9 @@ if(isset($_POST['docsub1']))
                         <td>$email</td>
                         <td>$password</td>
                         <td>$docFees</td>
+                        <td>$gender</td>
+                        <td>$docContact</td>
+                        <td>$docAddress</td>
                       </tr>";
                     }
 

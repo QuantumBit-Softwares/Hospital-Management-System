@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My Heading</h2>
+
+<p>Play around with the code and click on the "Run" button to view the result.</p>
+
+<p id="demo"></p>
+
+<table class="sortable">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Price</th>
+                <th class="date">Release date</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        </table>
+        
+        
+        
+        
+<table class="sorting">
+
+ <thead>
+            <tr>
+                <th>Game</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        
+	<tbody>	
+		<tr>
+        <th >Number</th>
+        <th >City</th>
+        </tr>
+
+        <tr>
+        <td>7</td>
+        <td>Los Angeles</td>
+        </tr>
+
+        <tr>
+        <td>4</td>
+        <td>Chicago</td>
+        </tr>
+
+        <tr>
+        <td>6</td>
+        <td>San Francisco</td>
+        </tr>
+
+        <tr>
+        <td>2</td>
+        <td>Long Beach</td>
+        </tr>
+        
+	</tbody>
+</table>
+
+
+
+<script>
+var tables = document.querySelectorAll('table.sorting'),table,thead,headers,i,j;
+
+
+        for (var i = 0; i < tables.length; i++)
+        {
+            var headers = tables[i].querySelectorAll('th');
+
+            for (var x = 0; x < headers.length; x++)
+            {
+                var header = headers[x];
+                var sortlink = document.createElement('a');
+                var datatype = header.dataset.type;
+
+                sortlink.innerHTML = header.innerHTML + '?';
+                sortlink.dataset.column = x;
+                sortlink.dataset.name = header.innerHTML;
+                sortlink.dataset.direction = 'asc';
+                sortlink.addEventListener('click', function (e) {
+                        sort(this);
+                    });
+
+                headers[x].innerHTML = '';
+                headers[x].appendChild(sortlink);
+                }
+        }
+    
+
+    
+    
+    
+    
+var tables = document.querySelectorAll("table.sortable"),
+    table,
+    thead,
+    headers,
+    i,
+    j;
+
+for (i = 0; i < tables.length; i++) {
+    table = tables[i];
+
+    if (thead = table.querySelector("thead")) {
+        headers = thead.querySelectorAll("th");
+
+        for (j = 0; j < headers.length; j++) {
+            headers[j].innerHTML = "<a href='#'>" + headers[j].innerText + "</a>";
+        }
+
+       
+    }
+}    
+    
+    
+    
+    function sort(el)
+{
+    var direction = el.dataset.direction;
+    var column = el.dataset.column;
+
+    var table = getTableFromChild(el);
+    var rows = table.rows;
+
+    for (var x = 0; x < rows.length; x++)
+    {
+        var changes = false;
+
+        for (var i = 1; i < rows.length-1; i++)
+        {
+            var row = rows[i];
+            var otherrow = rows[i + 1];
+            var parent = row.parentNode;
+
+            var value = rows[i].cells[column].innerHTML;
+            var next = rows[i + 1].cells[column].innerHTML;
+
+            if (value > next && direction == 'asc') {
+                changes = true;
+                parent.insertBefore(otherrow, row);
+            }
+
+            else if (value < next && direction == 'desc')
+            {
+                changes = true;
+                parent.insertBefore(otherrow, row);
+            }
+        }
+
+        if (changes == false)
+            break;
+    }
+
+    el.dataset.direction = direction == 'asc' ? 'desc' : 'asc';
+     el.innerHTML = el.dataset.name + (direction == 'asc' ? ' ?' : ' ?');
+}
+
+
+
+function getTableFromChild(child)
+{
+    var element = child;
+    var type = '';
+
+    while (type.toLowerCase() != 'table')
+    {
+        element = element.parentNode;
+
+        if (element != null)
+        {
+            type = element.nodeName;
+        }
+
+        else
+        {
+            break;
+        }
+    }
+
+    return element;
+}
+window.addEventListener('load', loadsort);
+</script>
+
+</body>
+</html>

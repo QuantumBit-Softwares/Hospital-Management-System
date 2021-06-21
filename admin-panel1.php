@@ -289,26 +289,111 @@ else {
 }
 $con->close();
 ?>
-
-
-
 <hr size="8" width="90%" color="red">  
+
+
+
+
+<!--
+
+
+  Sorting Doctor Name
+
+
+-->
+
+
+<!--Assigning php array to js array -->
+<script>
+var doc_username_js = <?php echo json_encode($username); ?>;
+</script>
+
+<!--Assigning case insentive to lower case -->
+<script>
+var doc_username_js = doc_username_js.map(item => item.toLowerCase());
+</script>
+<!-- converting js variable to Number data type -->
+<script>
+doc_username_js_string = doc_username_js.map(String);
+document.write("String contents" + "<br>");
+document.write(doc_username_js_string);
+
+</script>
+
+
+<br><br>
+<!--Making bubble sort-->
+<script>
+function sortItems(doc_username_js_string) {
+	for (let i = 0; i < doc_username_js_string.length; i++) {
+		for (let j = 0; j < doc_username_js_string.length; j++) {
+			if (doc_username_js_string[j] > doc_username_js_string[j + 1]) {
+				let temp = doc_username_js_string[j];
+				doc_username_js_string[j] = doc_username_js_string[j + 1];
+				doc_username_js_string[j + 1] = temp;
+			}
+		}
+	}
+	return doc_username_js_string;
+}
+</script>
+
+<!-- Creation of JS variable in Number datatype -->
+<script>
+var docUsernameToSort = doc_username_js_string;
+var sortedList = sortItems(docUsernameToSort);
+</script>
+
+
+<script>
+ for(let i = 0; i < sortedList.length; i++){ 
+    document.write(sortedList[i]);
+    document.write("<br>");
+    
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+  Sorting Doctor Fees
+
+
+-->
+
+
 <!--Assigning php array to js array -->
 <script>
 var doc_username_js = <?php echo json_encode($username); ?>;
 var doc_docFees_js = <?php echo json_encode($docFees); ?>;
-document.write("<br>" + "<br>" + "Doctor lng, you have no js data that u can access by index (: + '<br>' ");
- for(let i = 0; i < doc_username_js.length; i++){ 
-    //document.write(doc_username_js[i]);
-    document.write(doc_docFees_js[i]);
-    document.write("<br>");
-    }
 </script>
 
-<!--parsing the array to float -->
+<!-- converting js variable to Number data type -->
 <script>
 doc_docFees_js_float = doc_docFees_js.map(Number);
 </script>
+
 <!--Making bubble sort-->
 <script>
 function sortItems(doc_docFees_js_float) {
@@ -325,14 +410,25 @@ function sortItems(doc_docFees_js_float) {
 }
 </script>
 
+<!-- Creation of JS variable in Number datatype -->
+<script>
+var feesToSort = doc_docFees_js_float;
+var sortedList = sortItems(feesToSort);
+</script>
+
 
 <script>
-var numbersToSort = doc_docFees_js_float;
-var sortedList = sortItems(numbersToSort);
-document.write(sortedList);
-
-
+ for(let i = 0; i < sortedList.length; i++){ 
+    document.write(sortedList[i]);
+    document.write("<br>");
+    
+    }
 </script>
+
+
+
+
+
 
 
 

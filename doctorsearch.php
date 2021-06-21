@@ -9,6 +9,7 @@
 <body>
 <?php
 include("newfunc.php");
+
 if(isset($_POST['doctor_search_submit']))
 {
 	$contact=$_POST['doctor_contact'];

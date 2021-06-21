@@ -279,8 +279,8 @@ if ($result->num_rows > 0) {
   //print the content of the array to debug
   for ($i = 0; $i < $num; $i++){
     //defining the array name
-    echo  $username[$i] .  "<br />";
-    echo  $docFees[$i] .  "<br />";
+    //echo  $username[$i] .  "<br />";
+   // echo  $docFees[$i] .  "<br />";
 }
 }
 else {
@@ -294,30 +294,45 @@ $con->close();
 
 <hr size="8" width="90%" color="red">  
 <!--Assigning php array to js array -->
-
 <script>
-
-var doc_lng_js = <?php echo json_encode($doc_lng); ?>;
-
-
- 
-
-
+var doc_username_js = <?php echo json_encode($username); ?>;
+var doc_docFees_js = <?php echo json_encode($docFees); ?>;
 document.write("<br>" + "<br>" + "Doctor lng, you have no js data that u can access by index (: + '<br>' ");
- for(let i = 0; i < doc_lng_js.length; i++){ 
-    document.write(doc_lng_js[i]);
+ for(let i = 0; i < doc_username_js.length; i++){ 
+    //document.write(doc_username_js[i]);
+    document.write(doc_docFees_js[i]);
     document.write("<br>");
-    
     }
+</script>
 
-
-
+<!--parsing the array to float -->
+<script>
+doc_docFees_js_float = doc_docFees_js.map(Number);
+</script>
+<!--Making bubble sort-->
+<script>
+function sortItems(doc_docFees_js_float) {
+	for (let i = 0; i < doc_docFees_js_float.length; i++) {
+		for (let j = 0; j < doc_docFees_js_float.length; j++) {
+			if (doc_docFees_js_float[j] > doc_docFees_js_float[j + 1]) {
+				let temp = doc_docFees_js_float[j];
+				doc_docFees_js_float[j] = doc_docFees_js_float[j + 1];
+				doc_docFees_js_float[j + 1] = temp;
+			}
+		}
+	}
+	return doc_docFees_js_float;
+}
 </script>
 
 
+<script>
+var numbersToSort = doc_docFees_js_float;
+var sortedList = sortItems(numbersToSort);
+document.write(sortedList);
 
 
-
+</script>
 
 
 

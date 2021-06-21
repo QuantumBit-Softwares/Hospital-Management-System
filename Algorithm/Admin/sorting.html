@@ -8,28 +8,14 @@
 
 <p id="demo"></p>
 
-<table class="sortable">
-        <thead>
-            <tr>
-                <th>Game</th>
-                <th>Price</th>
-                <th class="date">Release date</th>
-                <th>Rating</th>
-            </tr>
-        </thead>
-        </table>
+
         
         
         
         
 <table class="sorting">
 
- <thead>
-            <tr>
-                <th>Game</th>
-                <th>Price</th>
-            </tr>
-        </thead>
+
         
 	<tbody>	
 		<tr>
@@ -93,27 +79,6 @@ var tables = document.querySelectorAll('table.sorting'),table,thead,headers,i,j;
     
     
     
-    
-var tables = document.querySelectorAll("table.sortable"),
-    table,
-    thead,
-    headers,
-    i,
-    j;
-
-for (i = 0; i < tables.length; i++) {
-    table = tables[i];
-
-    if (thead = table.querySelector("thead")) {
-        headers = thead.querySelectorAll("th");
-
-        for (j = 0; j < headers.length; j++) {
-            headers[j].innerHTML = "<a href='#'>" + headers[j].innerText + "</a>";
-        }
-
-       
-    }
-}    
     
     
     
@@ -187,3 +152,4 @@ window.addEventListener('load', loadsort);
 
 </body>
 </html>
+<!--Sorting-->

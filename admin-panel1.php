@@ -296,6 +296,7 @@ if(isset($_POST['docsub1']))
                   </tr>
                 </thead>
                 <tbody>
+                <!--Displayer-->
                   <?php 
                     $con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
@@ -323,7 +324,6 @@ if(isset($_POST['docsub1']))
                         <td>$docAddress</td>
                       </tr>";
                     }
-
                   ?>
                 </tbody>
               </table>

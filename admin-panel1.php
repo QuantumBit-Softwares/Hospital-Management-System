@@ -429,24 +429,38 @@ var sortedList = sortItems(feesToSort);
 
 <!--Sorting Function -->
 <style>
-table {
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
+.title{
+  text-align:center;
+  padding: 2% 4%;
+  font-family: Arial;
+}
+table{
+  font-size: 20pt;
+  width: 50%;
+  margin: 20px auto;
+}
+table th{
+  padding: 10px;
+background: #f5f5f5;
+color: #000;
+border-right: solid 1px #ddd;
+border-bottom: solid 1px #ddd;
 }
 
-th {
-  cursor: pointer;
+table tr td{
+  padding: 15px;
+line-height: 1.42857143;
+border: none;
 }
 
-th, td {
-  text-align: left;
-  padding: 16px;
+table tbody tr:nth-of-type(2n+1) {
+    background: #f5f5f5;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2
+table tr {
+    border-bottom: solid 1px #ddd;
 }
+
 </style>
 
 <p><strong>Click the headers to sort the table.</strong></p>

@@ -101,10 +101,12 @@ function loadSort()
         sort(this);
       });
 
-      headers[x].innerHTML = '';                         headers[x].appendChild(sortlink);
+      headers[x].innerHTML = ''; 
+      headers[x].appendChild(sortlink);
     }
   }
 }
+
 
 function sort(el)
 {
@@ -120,6 +122,7 @@ function sort(el)
 
     for (var i = 1; i < rows.length-1; i++)
     {
+      var temp;
       var row = rows[i];
       var otherrow = rows[i + 1];
       var parent = row.parentNode;
@@ -127,15 +130,29 @@ function sort(el)
       var value = rows[i].cells[column].innerHTML;
       var next = rows[i + 1].cells[column].innerHTML;
 
-      if (value > next && direction == 'asc') {
+      if (value > next && direction == 'asc') {//defaultasc
         changes = true;
-        parent.insertBefore(otherrow, row);
+        //parent.insertBefore(otherrow, row);
+		//.insertBefore is a code similar to swap
+        
+         temp=row;
+     	row=otherrow;
+     	otherrow=temp;
+        parent.insertBefore(row, otherrow);
+     
       }
 
       else if (value < next && direction == 'desc')
       {
         changes = true;
-        parent.insertBefore(otherrow, row);
+        //parent.insertBefore(otherrow, row);
+        //.insertBefore is a code similar to swap
+        
+          temp=row;
+     	row=otherrow;
+     	otherrow=temp;
+        parent.otherrow;
+     	parent.insertBefore(row, otherrow);
       }
     }
 
@@ -146,6 +163,7 @@ function sort(el)
   el.dataset.direction = direction == 'asc' ? 'desc' : 'asc';
   el.innerHTML = el.dataset.name + (direction == 'asc' ? ' &blacktriangledown;' : ' &blacktriangle;');
 }
+
 
 function getTableFromChild(child)
 {
@@ -178,4 +196,4 @@ window.addEventListener('load', function(){
 
 </body>
 </html>
-<!--Sorting-->
+<!--Sorting--> 

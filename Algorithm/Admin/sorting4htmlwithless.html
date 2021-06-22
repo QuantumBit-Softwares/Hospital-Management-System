@@ -44,7 +44,9 @@ table tr {
         
         
         
-        
+<script>
+document.write(5 + 6);
+</script>
         
         
    <div class='title'>
@@ -67,12 +69,23 @@ table tr {
     </tr>
     
     <tr>
+      <td>Printer</td>
+      <td>551
+    </tr>
+    
+    
+    <tr>
       <td>Mouse</td>
       <td>30</td>
     </tr>
   </table>
+  
 </div>
 
+
+<script>
+document.write(5 + 6);
+</script>
 
 
 
@@ -114,98 +127,57 @@ function loadSort()
 
 
 
+
+
+
 function sort(el)
 {
+
   var direction = el.dataset.direction; //asc
   var column = el.dataset.column; //price
 
   var table = getTableFromChild(el);
   var rows = table.rows;
-  var sizeofrow = rows.length
+  var sizeofrow = rows.length;
   var refend = 0;
 
 //rows array , row define index of rows array
   for (var i = 0; i < sizeofrow; i++)
   {
   // i dont know the purpose of changes
-     var changes = false;
+     var changes = true;
 
-    
-      //var temp;
+
+  
       var row = rows[i]; //define row to be 2
-      //var otherrow = rows[i + 1];
-      
-      
-      //changed
       var otherrow = rows[sizeofrow]; //define row to be 8
       
+      
       var parent = row.parentNode;
-
       var start = rows[i].cells[column].innerHTML;
-      //var next = rows[i + 1].cells[column].innerHTML;
       var end = rows[sizeofrow-refend].cells[column].innerHTML
-
-      if (start > end && direction == 'asc') {//defaultasc
-        changes = true;
-        //parent.insertBefore(otherrow, row);
-		//.insertBefore is a code similar to swap
+      
+      if (start > end) {//defaultasc
+        changes = true; 
         
-        //8 6 4 2
-        // temp=row; // 8
-     	//row=otherrow;  // 2
-     	//otherrow=temp; //8
-        
-        //parent.insertBefore(row, otherrow);
-        
-        
-        //inserting directly
-        //performing swap process
-       // parent.insertBefore(row[sizeofrow-refend], row); //insert 8 before 2
-        //parent.insertAfter(row[i+1], row[sizeofrow]); //insert 2 after 4
-        
-        parent.insertBefore(row[i], row[sizeofrow-refend]) // insert 8 before 2
-        //will give us 6 4 8 2 
-        parent.insertBefore(row[sizeofrow-refend], row[i]) // insert 2 before 6
-        // will give us 2 6 4 8
-        
-        
-     
-      }
-
-      else if (start < end && direction == 'desc')
-      {
-        changes = true;
-        //parent.insertBefore(otherrow, row);
-        //.insertBefore is a code similar to swap
-        //parent.insertBefore(row, otherrow);
-        
-         // temp=row;
-     	//row=otherrow;
-     	//otherrow=temp;
-        
-        
-        //inserting directly
-        //performing swap process
-        //parent.insertBefore(row[sizeofrow-refend], row); //insert 8 before 2
-        //parent.insertAfter(row[i+1], row[sizeofrow]); //insert 2 after 4
- 
-        parent.insertBefore(row[i], row[sizeofrow-refend]) // insert 8 before 2
-        //will give us 6 4 8 2 
-        parent.insertBefore(row[sizeofrow-refend], row[i]) // insert 2 before 6
-        // will give us 2 6 4 8
-        
-     	
+        //8 6  3 1 4 2
+        parent.insertBefore(row, otherrow) // insert 8 before 2
+        //will give us 6 3 1 4 8 2 
+        parent.insertBefore(otherrow, row) // insert 2 before 6
+        // will give us 2 6 3 1 4 8
       }
       
-     
-    
+      changes = true; 
+
+
+
 
     if (changes == false){
-    alert("bullshit");
+    alert("blahblah");
       break;
       }
       
-       refend = refend-1;
+       refend = refend+1; 
        sizeofrow = sizeofrow-1;
        
   }//for loop end
@@ -213,6 +185,7 @@ function sort(el)
   el.dataset.direction = direction == 'asc' ? 'desc' : 'asc';
   el.innerHTML = el.dataset.name + (direction == 'asc' ? ' &blacktriangledown;' : ' &blacktriangle;');
 }//functionend
+
 
 
 

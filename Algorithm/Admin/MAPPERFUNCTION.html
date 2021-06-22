@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<p id="demo"></p>
+
+<script>
+
+
+function myFunc(one, two) {
+    alert(one); alert(two);
+}
+
+
+function getNames(main, identifier) {
+    // get names from the database or API
+    let firstName = main,
+        lastName = identifier;
+
+    // return as an array
+    return [firstName, lastName];
+}
+
+
+function sortItems(array, mapper) {
+	let swapped = true;
+	do {
+		swapped = false;
+		for (let j = 0; j < array.length; j++) {
+			if (array[j] > array[j + 1]) {
+				let temp = array[j];
+                let tempMapper = mapper[j];
+                
+                
+                
+				array[j] = array[j + 1];
+                mapper[j] = mapper[j+1];
+                
+                
+				array[j + 1] = temp;
+                mapper[j+1] = tempMapper;
+                
+                
+				swapped = true;
+			}
+		}
+	} while (swapped);
+	return [array, mapper];
+}
+
+
+
+</script>
+
+
+<script>
+//myFunc(1,2);
+document.write("<br>");
+const [firstName, lastName] = getNames('Asher', 'Manangan');
+document.write(firstName);
+document.write("<br>");
+document.write(lastName);
+
+
+
+var numbersToSort = [30,10,60,90,11,9,13,91];
+const lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+const [price, identifier] = sortItems(numbersToSort, lettersToSort);
+document.write("<br>");
+document.write(price);
+document.write("<br>");
+document.write(identifier);
+
+
+
+</script>
+</body>
+</html>

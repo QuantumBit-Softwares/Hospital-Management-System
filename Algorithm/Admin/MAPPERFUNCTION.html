@@ -66,12 +66,83 @@ function Oyelami_sort(array, mapper){
 
 
 
+
+//cocktail function
+function cocktailSort(arr,mapper) {
+	//Start and end is used to keep track of where the beginning and the end of the array is at
+	//to determine where needs to be checked for sorting
+	//Swapped is our conditional to check if everything is sorted
+	let start = 0, end = arr.length, swapped = true;
+
+	while (swapped) {
+		//Setting the flag to false, in case it is true from the previous iteration
+		swapped = false;
+
+		//Bubble sort from the left side of the array to the right, moving the largest.
+		for (let i = start; i < end - 1; i++)
+		{
+			if (arr[i] > arr[i+1]) {
+				let temp = arr[i];
+                let tempMapper = mapper[i];
+                
+				arr[i] = arr[i+1];
+                mapper[i] = mapper[i+1];
+                
+                
+				arr[i+1] = temp;
+                mapper[i+1] = tempMapper;
+                
+                
+				swapped = true;
+			}
+		}
+
+		//This is to update the end, so that next iteration, we don't have to check this index.
+		end--;
+
+		//If everything is already sorted, we can break out of the loop early.
+		if (!swapped)
+		{
+			break;
+		}
+
+		//Setting the flag to false, so it can be used for the next phase
+		swapped = false;
+
+		//Reverse Bubble sort, moving the smallest to the front.
+		for (let i = end - 1; i > start; i--)
+		{
+			if (arr[i - 1] > arr[i])
+			{
+				let temp = arr[i];
+                let tempMapper1 = mapper[i];
+                
+                
+				arr[i] = arr[i - 1];
+                mapper[i] = mapper[i-1];
+                
+                
+				arr[i - 1] = temp;
+                mapper[i-1] = tempMapper1;
+                
+                
+				swapped = true;
+			}
+		}
+
+		//This is to update the beginning, so that next iteration, we don't have to check this index.
+		start++;
+	}
+
+	return [arr, mapper];
+}
+
 </script>
 
 
 <script>
 
-
+document.write("Bubble Sort as Reference");
 var numbersToSort = [30,10,60,90,11,9,13,91,1,2,3,4];
 var lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 var [price, identifier] = sortItems(numbersToSort, lettersToSort);
@@ -90,16 +161,31 @@ var [price, identifier] = Oyelami_sort(numbersToSort, lettersToSort);
 document.write("<br>");
 document.write(price);
 document.write("<br>");
-document.writer(identifier);
+document.write(identifier);
+document.write("<br>");
+document.write("Does it changed and altered the contents?: " + "<br>");
+document.write(numbersToSort);
+document.write("    <----------- Yes, ready for cocktail");
 
-//diagnosis
+
 document.write("<br><br>");
-document.write("Diagnosis");
-document.write("Content of i: " + numbersToSort[i] + "<br>");
-document.write("Content of j: " + numbersToSort[j-1] + "<br>");
+document.write("Cocktail Sort");
+//since data are already processed by javascript what we need now is just to pass it to cokctail sort
+var [price, identifier] = cocktailSort(numbersToSort, lettersToSort);
+document.write("<br>");
+document.write(price);
+document.write("<br>");
+document.write(identifier);
+document.write("<br>");
 
 
 
+</script>
+
+
+<script>
+document.write("<br><br><br>");
+document.write("Refer for cocktail here: https://medium.com/weekly-webtips/cocktail-sort-in-javascript-6b645c59ecea" + "<br>");
 </script>
 </body>
 </html>

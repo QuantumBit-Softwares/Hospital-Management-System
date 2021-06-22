@@ -7,23 +7,6 @@
 <p id="demo"></p>
 
 <script>
-
-
-function myFunc(one, two) {
-    alert(one); alert(two);
-}
-
-
-function getNames(main, identifier) {
-    // get names from the database or API
-    let firstName = main,
-        lastName = identifier;
-
-    // return as an array
-    return [firstName, lastName];
-}
-
-
 function sortItems(array, mapper) {
 	let swapped = true;
 	do {
@@ -52,26 +35,68 @@ function sortItems(array, mapper) {
 
 
 
+
+//contents
+var i = 0 ;
+var lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+var j = lettersToSort.length;
+
+//Oyelami Function
+function Oyelami_sort(array, mapper){
+	while(i<j-1) {
+    
+    	if (array[i] > array[j-1]){
+        	let temp = array[i];
+            let tempMapper = mapper[i];
+            
+            array[i] = array[j-1];
+            mapper[i] = mapper[j-1];
+            
+            
+            array[j-1] = temp;
+            mapper[j-1] = tempMapper;
+            
+            }//end of if statement
+                i=i+1;
+				j=j-1;	
+    }//end  of while loop
+
+	return [array, mapper];
+}//end of function Oyelami_sort
+
+
+
 </script>
 
 
 <script>
-//myFunc(1,2);
-document.write("<br>");
-const [firstName, lastName] = getNames('Asher', 'Manangan');
-document.write(firstName);
-document.write("<br>");
-document.write(lastName);
 
 
-
-var numbersToSort = [30,10,60,90,11,9,13,91];
-const lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-const [price, identifier] = sortItems(numbersToSort, lettersToSort);
+var numbersToSort = [30,10,60,90,11,9,13,91,1,2,3,4];
+var lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+var [price, identifier] = sortItems(numbersToSort, lettersToSort);
 document.write("<br>");
 document.write(price);
 document.write("<br>");
 document.write(identifier);
+document.write("<br><br>");
+
+
+
+document.write("Oyelami Sort");
+var numbersToSort = [30,10,60,90,11,9,13,91,1,2,3,4];
+var lettersToSort = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','I', 'J', 'K', 'L'];
+var [price, identifier] = Oyelami_sort(numbersToSort, lettersToSort);
+document.write("<br>");
+document.write(price);
+document.write("<br>");
+document.writer(identifier);
+
+//diagnosis
+document.write("<br><br>");
+document.write("Diagnosis");
+document.write("Content of i: " + numbersToSort[i] + "<br>");
+document.write("Content of j: " + numbersToSort[j-1] + "<br>");
 
 
 

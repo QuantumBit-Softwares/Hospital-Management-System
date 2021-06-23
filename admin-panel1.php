@@ -533,6 +533,12 @@ function Display1() {
             var counterplus = 0;
 </script>
 <table id="table2" style="width:100%;display:none">
+
+<script>
+              Oyelami_sort(doc_docFees_js64, doc_username_js_l );
+              cocktailSort(doc_docFees_js64, doc_username_js_l);
+  </script>
+
 <tr>
     <th>Doctor Name</th>
     <th>Fees</th>

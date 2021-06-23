@@ -4,7 +4,6 @@ $con=mysqli_connect("localhost","root","","myhmsdb");
 
 include('newfunc.php');
 
-
 if(isset($_POST['docsub']))
 {
   $doctor=$_POST['doctor'];
@@ -249,34 +248,6 @@ if(isset($_POST['docsub1']))
       
                 
       
-<!-- Preparing the data
-SQL to PHP
-PHP to JAVA
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -284,97 +255,19 @@ PHP to JAVA
 
 
       <div class="tab-pane fade" id="list-doc" role="tabpanel" aria-labelledby="list-home-list">
-      <div class="col-md-4">
-          <label>Search by:</label>
-        </div>
+              
 
-        <div class="col-md-8">
-        <form class="form-group" action="doctorsearch.php" method="post">                            
-                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
-                                        <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="username" name="username">Doctor Name</option>
-                                        <option value="spec" name="spec">Specialization</option>
-                                        <option value="email" name="email">Email</option>
-                                        <option value="password" name="password">Password</option>
-                                        <option value="fees" name="fees">Fees</option>
-                                        <option value="gender" name="gender">Gender</option>
-                                        <option value="docContact" name="docContact">Contact</option>
-                                        <option value="docAddress" name="docAddress">Address</option>
-                                        </select>
-        <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>                                
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div>
-        </form>                
-         </div>
-         <br><br>
+              <div class="col-md-8">
+      <form class="form-group" action="doctorsearch.php" method="post">
+        <div class="row">
 
+        <!--first major changes -->
 
-
-         <!--Sort by -->
-    <div class="col-md-4">
-      <label>Sort by:</label>
-    </div>
-
-    <div class="col-md-8">
-    <form class="form-group" action="doctorsearch.php" method="post">
-                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
-                                        <option value="head"  disabled selected>Filter Sort by</option>
-                                        <option value="username" name="username">Doctor Name</option>
-                                        <option value="fees" name="fees">Fees</option>
-                                        </select>
-        <div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div>
-      </form>
-    </div>
-    <br>
-
-    <input id="clickMe" type="button" value="Sort By Doctor Name" onclick="doFunction();" />
-    <input id="clickMe" type="button" value="Sort By Doctor Fees" onclick="doFunction();" />
-
-
-
-        <!--Alter later to search by 7 criteria
-        
-        <div class="col-md-4">
-          <label>Search by:</label>
-        </div>
-
-                                    <div class="col-md-8">
-                                    
-                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
-                                        <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="username" name="username">Doctor Name</option>
-                                        <option value="spec" name="spec">Specialization</option>
-                                        <option value="email" name="email">Email</option>
-                                        <option value="password" name="password">Password</option>
-                                        <option value="fees" name="fees">Fees</option>
-                                        <option value="gender" name="gender">Gender</option>
-                                        <option value="docContact" name="docContact">Contact</option>
-                                        <option value="docAddress" name="docAddress">Address</option>
-                                        </select>
-
-                                        </div><br><br>
-        <div class="col-md-10"><input type="text" name="admin-query-doc" placeholder="Enter here" class = "form-control"></div>
+        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
-    </div><br>-->
-
-    <!--Sort by 
-    <div class="col-md-4"><label>Sort by:</label></div>
-    <form class="form-group" action="doctorsearch.php" method="post">
-                                    <div class="col-md-8">
-                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
-                                        <option value="head"  disabled selected>Filter Sort by</option>
-                                        <option value="username" name="username">Doctor Name</option>
-                                        <option value="fees" name="fees">Fees</option>
-                                        </select>
-                                        </div>
-        <br><div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div></div>
-      </form>
-    </div>
-    <br>-->
-
-
-
-<!--Doctor List -->
+    </div><!--row end -->
+    
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -383,13 +276,9 @@ PHP to JAVA
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">Fees</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Address</th>
                   </tr>
                 </thead>
                 <tbody>
-                <!--Displayer-->
                   <?php 
                     $con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
@@ -401,10 +290,6 @@ PHP to JAVA
                       $email = $row['email'];
                       $password = $row['password'];
                       $docFees = $row['docFees'];
-                      $gender = $row['gender'];
-                      $docContact = $row['docContact'];
-                      $docAddress = $row['docAddress'];
-
                       
                       echo "<tr>
                         <td>$username</td>
@@ -412,11 +297,9 @@ PHP to JAVA
                         <td>$email</td>
                         <td>$password</td>
                         <td>$docFees</td>
-                        <td>$gender</td>
-                        <td>$docContact</td>
-                        <td>$docAddress</td>
                       </tr>";
                     }
+
                   ?>
                 </tbody>
               </table>
@@ -427,11 +310,13 @@ PHP to JAVA
 
 
 
-  <!--patient-->    
 
-  
+
+
+
+      
     <div class="tab-pane fade" id="list-pat" role="tabpanel" aria-labelledby="list-pat-list">
-<!--
+
        <div class="col-md-8">
       <form class="form-group" action="patientsearch.php" method="post">
         <div class="row">
@@ -439,54 +324,6 @@ PHP to JAVA
         <div class="col-md-2"><input type="submit" name="patient_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
     </div>
-                  -->
-
-
-    <div class="col-md-4">
-          <label>Search by:</label>
-        </div>
-
-        <div class="col-md-8">
-        <form class="form-group" action="patientsearch.php" method="post">                            
-                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
-                                        <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="username" name="username">Patient ID</option>
-                                        <option value="spec" name="spec">First Name</option>
-                                        <option value="email" name="email">Last Name</option>
-                                        <option value="password" name="password">Gender</option>
-                                        <option value="fees" name="fees">Email</option>
-                                        <option value="gender" name="gender">Contact</option>
-                                        <option value="docContact" name="docContact">Password</option>
-                                        </select>
-        <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>                                
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div>
-        </form>                
-         </div>
-         <br><br>
-
-
-
-         <!--Sort by -->
-    <div class="col-md-4">
-      <label>Sort by:</label>
-    </div>
-
-    <div class="col-md-8">
-    <form class="form-group" action="doctorsearch.php" method="post">
-                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
-                                        <option value="head"  disabled selected>Filter Sort by</option>
-                                        <option value="username" name="username">First Name</option>
-                                        <option value="fees" name="fees">Last Name</option>
-                                        <option value="fees" name="fees">Gender</option>
-                                        <option value="fees" name="fees">Email</option>
-                                        <option value="fees" name="fees">Patient ID</option>
-                                        </select>
-        <div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div>
-      </form>
-    </div>
-    <br>
-
-
         
               <table class="table table-hover">
                 <thead>
@@ -673,72 +510,35 @@ PHP to JAVA
 
 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
 
-
-
-
-
-
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <form class="form-group" method="post" action="admin-panel1.php">
           <div class="row">
-          <div class="col-md-4"><label>Your Name:</label></div>
-                                    <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
-                                    
-                                    <div class="col-md-4"><label>Contact #:</label></div>
-                                    <div class="col-md-8"><input type="text" class="form-control"  name="docContact" required></div><br><br>
-
-                                    <div class="col-md-4"><label>Address:</label></div>
-                                    <div class="col-md-8"><input type="text" class="form-control"  name="docAddress" required></div><br><br>
-
-                                    
-
-
-                                    <div class="col-md-4"><label>Specialization:</label></div>
-                                    <div class="col-md-8">
-                                    <select name="special" class="form-control" id="special" required="required">
-                                        <option value="head" name="spec" disabled selected>Select Specialization</option>
-                                        <option value="General" name="spec">General</option>
-                                        <option value="Cardiologist" name="spec">Cardiologist</option>
-                                        <option value="Neurologist" name="spec">Neurologist</option>
-                                        <option value="Pediatrician" name="spec">Pediatrician</option>
-                                        </select>
-                                        </div><br><br>
-                                    <div class="col-md-4"><label>Email ID:</label></div>
-                                    
-                                    <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
-                                    <div class="col-md-4"><label>Password:</label></div>
-                                    <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
-                                    <div class="col-md-4"><label>Confirm Password:</label></div>
-
-                                    <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
-                                    <div class="col-md-4"><label>Consultancy Fees:</label></div>
-
-                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
-                                       
-                                       
-                                        
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="dgender" value="Male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="dgender" value="Female">
-                                                    <span>Female </span> 
-                                                </label>
-                                            </div>
-
-                                            <br>
-
+                  <div class="col-md-4"><label>Doctor Name:</label></div>
+                  <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
+                  <div class="col-md-4"><label>Specialization:</label></div>
+                  <div class="col-md-8">
+                   <select name="special" class="form-control" id="special" required="required">
+                      <option value="head" name="spec" disabled selected>Select Specialization</option>
+                      <option value="General" name="spec">General</option>
+                      <option value="Cardiologist" name="spec">Cardiologist</option>
+                      <option value="Neurologist" name="spec">Neurologist</option>
+                      <option value="Pediatrician" name="spec">Pediatrician</option>
+                    </select>
+                    </div><br><br>
+                  <div class="col-md-4"><label>Email ID:</label></div>
+                  <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
+                  <div class="col-md-4"><label>Password:</label></div>
+                  <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
+                  <div class="col-md-4"><label>Confirm Password:</label></div>
+                  <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
+                   
+                  
+                  <div class="col-md-4"><label>Consultancy Fees:</label></div>
+                  <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
                 </div>
           <input type="submit" name="docsub" value="Add Doctor" class="btn btn-primary">
         </form>
       </div>
-
-
-
-
-
 
       <div class="tab-pane fade" id="list-settings1" role="tabpanel" aria-labelledby="list-settings1-list">
         <form class="form-group" method="post" action="admin-panel1.php">
@@ -751,7 +551,6 @@ PHP to JAVA
           <input type="submit" name="docsub1" value="Delete Doctor" class="btn btn-primary" onclick="confirm('do you really want to delete?')">
         </form>
       </div>
-
 
 
        <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>

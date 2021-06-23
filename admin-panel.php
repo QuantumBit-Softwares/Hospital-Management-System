@@ -394,7 +394,6 @@ include('distance_in_js1.php');
             <tr>
               <th scope="col">Doctor Name</th>
               <th scope="col">Distance</th>
-             
               <th scope="col">Get Direction</th>
               <th scope="col">Book Now</th>
             </tr>

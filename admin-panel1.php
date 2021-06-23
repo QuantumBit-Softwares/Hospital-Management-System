@@ -259,6 +259,7 @@ SQL to PHP
 PHP to JAVA
 -->
 
+<script src="Algorithm\Admin\Oyelami_sort.js"></script>
 
 <?php 
  $query = "select  username, docFees from doctb";
@@ -297,7 +298,7 @@ $con->close();
 ?>
 
 
-<script src="Algorithm\Admin\Oyelami_sort.js"></script>
+
 
 
 
@@ -767,9 +768,135 @@ document.getElementById("btn100").addEventListener("click", function(){
 
 
 
-  <!--patient-->    
-
+  <!--patient-->  
   
+<?php 
+ $query = "select  fname, lname from patreg";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+      $fname[] = $row["fname"];
+      $lname[] = $row["lname"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   //echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable 
+
+//main counter
+var pat_fname_js_count = <?php echo json_encode($fname); ?>;
+
+
+var pat_fname_js = <?php echo json_encode($fname); ?>;
+var pat_fname_js_l = pat_fname_js.map(pat_fname_js => pat_fname_js.toLowerCase());
+
+var pat_lname_js = <?php echo json_encode($lname); ?>;
+var pat_lname_js_l = pat_lname_js.map(pat_lname_js => pat_lname_js.toLowerCase());
+
+</script>
+
+
+<script>
+var i = 0 ;
+var j = pat_fname_js_count.length;
+</script>
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = pat_fname_js_count.length;
+document.getElementById("SortByfname").onclick = Oyelami_sort(pat_fname_js_l,pat_lname_js_l  ); //this is where to display
+
+</script>
+<button id="SortByfname" onclick="cocktailSort(pat_fname_js_l,pat_lname_js_l ); Display2() ">Sort By First Name</button>
+
+<script>
+function Display2() {
+document.write("<br>");
+document.write(pat_fname_js_l);
+document.write("<br>");
+document.write(pat_lname_js_l );
+document.write("<br>");
+document.write("FNameFNameDoes it changed and altered the contents?: FName " + "<br>");
+document.write(pat_lname_js_l );
+document.write("    <----------- Yes, ready for cocktail");
+}
+</script>
+
+
+
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable
+//refresher 
+//main counter
+var pat_fname_js_count = <?php echo json_encode($fname); ?>;
+
+
+var pat_fname_js = <?php echo json_encode($fname); ?>;
+var pat_fname_js_l = pat_fname_js.map(pat_fname_js => pat_fname_js.toLowerCase());
+
+var pat_lname_js = <?php echo json_encode($lname); ?>;
+var pat_lname_js_l = pat_lname_js.map(pat_lname_js => pat_lname_js.toLowerCase());
+</script>
+
+
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = pat_fname_js_count.length;
+document.getElementById("SortBylname").onclick = Oyelami_sort(pat_lname_js_l,pat_fname_js_l); //this is where to display
+
+</script>
+<button id="SortBylname" onclick="cocktailSort(pat_lname_js_l,pat_fname_js_l); Display3()" >Sort By Last Name</button>
+
+<script>
+function Display3() {
+    document.write("<br>");
+    document.write(pat_fname_js_l);
+    document.write("<br>");
+    document.write(pat_lname_js_l);
+    document.write("<br>");
+    document.write("LnameLnameLnameDoes it changed and altered the contents? Lname: " + "<br>");
+    document.write(pat_lname_js_l);
+    document.write("    <----------- Yes, ready for cocktailss");
+}
+</script>
+  
+
+
+
     <div class="tab-pane fade" id="list-pat" role="tabpanel" aria-labelledby="list-pat-list">
 <!--
        <div class="col-md-8">
@@ -806,7 +933,7 @@ document.getElementById("btn100").addEventListener("click", function(){
 
 
 
-         <!--Sort by -->
+         <!--Sort by
     <div class="col-md-4">
       <label>Sort by:</label>
     </div>
@@ -823,11 +950,11 @@ document.getElementById("btn100").addEventListener("click", function(){
                                         </select>
         <div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div>
       </form>
-    </div>
+    </div> -->
     <br>
 
 
-        
+        <!--
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -841,39 +968,294 @@ document.getElementById("btn100").addEventListener("click", function(){
                   </tr>
                 </thead>
                 <tbody>
+
+-->
+
+
+<div class='title'>
+<h1>Table Sorting in JavaScript (Oyelami + CockTail Sort)</h1>
+</div>
+
+<button id="btn1100" class="btn btn-primary">Original Order</button>
+<button id="btn11" class="btn btn-primary">Sort By Patient's First Name</button>
+<button id="btn22" class="btn btn-primary">Sort By Patient's Last Name</button>
+<br><br>
+
+
+<!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+
+<table id="table11" style="width:100%;display:none">
+
+            <script>
+              Oyelami_sort(pat_fname_js_l,pat_lname_js_l );
+              cocktailSort(pat_fname_js_l,pat_lname_js_l);
+  </script>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+
+            <?php 
+              //defining conditions
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              $query = "select fname from patreg";
+              $result = mysqli_query($con,$query);
+                        
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+
+            <tr>
+              <td>
+                            <script type="text/javascript">
+                            document.write(pat_fname_js_l[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+                            <script type="text/javascript">
+                            //var number = 123;
+                            //document.write(number)
+                            document.write(pat_lname_js_l[counter]);
+                          counter++;
+                            </script>
+              </td>
+            </tr>
+            <?php }
+          ?>
+</table>
+
+
+
+<!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table22" style="width:100%;display:none">
+
+<script>
+              Oyelami_sort(pat_lname_js_l, pat_fname_js_l );
+              cocktailSort(pat_lname_js_l, pat_fname_js_l);
+  </script>
+
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select fname from patreg";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+  ?>
+
+  <tr>
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pat_fname_js_l[counter]);
+                  
+                 
+                  </script>
+    </td>
+
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pat_lname_js_l[counter]);
+                 counter++;
+                  </script>
+    </td>
+  </tr>
+  <?php }
+?>
+</table>
+
+
+
+
+<!--table100-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table1100" style="width:100%; ">
+<tr>
+                    <th scope="col">Patient ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Password</th>
+                  
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select * from patreg";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+      $pid = $row['pid'];
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $gender = $row['gender'];
+      $email = $row['email'];
+      $contact = $row['contact'];
+      $password = $row['password'];
+     
+
+      
+      echo "<tr>
+        <td>$pid</td>
+        <td>$fname</td>
+        <td>$lname</td>
+        <td>$gender</td>
+        <td>$email</td>
+        <td>$contact</td>
+        <td>$password</td>
+      </tr>";
+    }
+  ?>
+</table>
+
+
+<script>
+document.getElementById("btn11").addEventListener("click", function(){
+
+  document.getElementById("table11").style.display = "block";
+  document.getElementById("table22").style.display = "none";//hide
+  document.getElementById("table1100").style.display = "none";//hide
+});
+document.getElementById("btn22").addEventListener("click", function(){
+  document.getElementById("table22").style.display = "block";
+  document.getElementById("table11").style.display = "none";//hide
+  document.getElementById("table1100").style.display = "none";//hide
+});
+document.getElementById("btn1100").addEventListener("click", function(){
+  document.getElementById("table1100").style.display = "block";
+  document.getElementById("table11").style.display = "none";//hide
+  document.getElementById("table22").style.display = "none";//hide
+});
+</script>
+
+
+
+        <!--Alter later to search by 7 criteria
+        
+        <div class="col-md-4">
+          <label>Search by:</label>
+        </div>
+
+                                    <div class="col-md-8">
+                                    
+                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
+                                        <option value="head"  disabled selected>Filter Search by</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="spec" name="spec">Specialization</option>
+                                        <option value="email" name="email">Email</option>
+                                        <option value="password" name="password">Password</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        <option value="gender" name="gender">Gender</option>
+                                        <option value="docContact" name="docContact">Contact</option>
+                                        <option value="docAddress" name="docAddress">Address</option>
+                                        </select>
+
+                                        </div><br><br>
+        <div class="col-md-10"><input type="text" name="admin-query-doc" placeholder="Enter here" class = "form-control"></div>
+        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
+      </form>
+    </div><br>-->
+
+    <!--Sort by 
+    <div class="col-md-4"><label>Sort by:</label></div>
+    <form class="form-group" action="doctorsearch.php" method="post">
+                                    <div class="col-md-8">
+                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
+                                        <option value="head"  disabled selected>Filter Sort by</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        </select>
+                                        </div>
+        <br><div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div></div>
+      </form>
+    </div>
+    <br>-->
+
+
+
+<!--Doctor List 
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Specialization</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+                  </tr>
+                </thead>
+                <tbody>-->
+                  
+                <!--Displayer
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    /*$con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
-                    $query = "select * from patreg";
+                    $query = "select * from doctb";
                     $result = mysqli_query($con,$query);
                     while ($row = mysqli_fetch_array($result)){
-                      $pid = $row['pid'];
-                      $fname = $row['fname'];
-                      $lname = $row['lname'];
-                      $gender = $row['gender'];
+                      $username = $row['username'];
+                      $spec = $row['spec'];
                       $email = $row['email'];
-                      $contact = $row['contact'];
                       $password = $row['password'];
+                      $docFees = $row['docFees'];
+                      $gender = $row['gender'];
+                      $docContact = $row['docContact'];
+                      $docAddress = $row['docAddress'];
+
                       
                       echo "<tr>
-                        <td>$pid</td>
-                        <td>$fname</td>
-                        <td>$lname</td>
-                        <td>$gender</td>
+                        <td>$username</td>
+                        <td>$spec</td>
                         <td>$email</td>
-                        <td>$contact</td>
                         <td>$password</td>
+                        <td>$docFees</td>
+                        <td>$gender</td>
+                        <td>$docContact</td>
+                        <td>$docAddress</td>
                       </tr>";
-                    }
-
+                    }*/
                   ?>
                 </tbody>
               </table>
-        <br>
-      </div>
+        <br>-->
+      </div><!-- end of the div for doc-->
+    
 
 
-      <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
+
+
+
+<!--prescription sort -->
+<div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
 
        <div class="col-md-8">
   

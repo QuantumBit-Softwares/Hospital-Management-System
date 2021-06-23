@@ -1,4 +1,6 @@
-
+//Only accept two values, which means two attributes to display 
+//will take longer time to map all values if included
+//still algo works
 function sortItems(array, mapper) {
 	let swapped = true;
 	do {

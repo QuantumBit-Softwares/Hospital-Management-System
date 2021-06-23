@@ -248,18 +248,166 @@ if(isset($_POST['docsub1']))
             </div>
       
                 
-      
+    
 <!-- Preparing the data
 SQL to PHP
 PHP to JAVA
 -->
 
 
+<?php 
+ $query = "select  username, docFees from doctb";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+      $username[] = $row["username"];
+      $docFees[] = $row["docFees"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   //echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+
+
+<script>
+//assign to a js variable 
+var doc_username_js = <?php echo json_encode($username); ?>;
+var doc_username_js_l = doc_username_js.map(doc_username_js => doc_username_js.toLowerCase());
+
+var doc_username_js_count = <?php echo json_encode($username); ?>;
+var doc_docFees_js = <?php echo json_encode($docFees); ?>;
+</script>
+
+
+
+<script>
+var i = 0 ;
+var j = doc_username_js_count.length;
+</script>
+
+
+
+<script src="Algorithm\Admin\Oyelami_sort.js"></script>
 
 
 
 
 
+
+<!--Hidden Sorting Process-->
+<script>
+
+
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = doc_username_js_count.length;
+  
+document.getElementById("SortByName").onclick = Oyelami_sort(doc_username_js_l,doc_docFees_js ); //this is where to display
+
+</script>
+<button id="SortByName" onclick="cocktailSort(doc_username_js_l,doc_docFees_js); Display() ">Sort By Name</button>
+
+
+
+<script>
+
+
+function Display() {
+document.write("<br>");
+document.write(doc_username_js_l);
+document.write("<br>");
+document.write(doc_docFees_js);
+document.write("<br>");
+document.write("Does it changed and altered the contents?: " + "<br>");
+document.write(doc_docFees_js);
+document.write("    <----------- Yes, ready for cocktail");
+
+
+}
+</script>
+
+
+
+
+
+
+<script>
+//assign to a js variable
+//refresher 
+var doc_username_js = <?php echo json_encode($username); ?>;
+var doc_username_js_l = doc_username_js.map(doc_username_js => doc_username_js.toLowerCase());
+
+var doc_username_js_count = <?php echo json_encode($username); ?>;
+var doc_docFees_js = <?php echo json_encode($docFees); ?>;
+var doc_docFees_js64 = new Float64Array(doc_docFees_js);
+</script>
+<!--Hidden Sorting Process-->
+
+
+<script>
+
+
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = doc_username_js_count.length;
+  
+document.getElementById("SortByNumber").onclick = Oyelami_sort(doc_docFees_js64,doc_username_js_l); //this is where to display
+
+</script>
+<button id="SortByNumber" onclick="cocktailSort(doc_docFees_js64,doc_username_js_l); Display1()" >Sort By Number</button>
+
+
+
+
+
+<script>
+
+
+function Display1() {
+    document.write("<br>");
+    document.write(doc_username_js_l);
+    document.write("<br>");
+    document.write(doc_docFees_js64);
+    document.write("<br>");
+    document.write("Does it changed and altered the contents?: " + "<br>");
+    document.write(doc_docFees_js64);
+    document.write("    <----------- Yes, ready for cocktailss");
+}
+
+
+
+
+
+
+
+
+
+</script>
 
 
 
@@ -423,6 +571,24 @@ PHP to JAVA
         <br>
       </div>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,6 +4,7 @@ $con=mysqli_connect("localhost","root","","myhmsdb");
 
 include('newfunc.php');
 
+
 if(isset($_POST['docsub']))
 {
   $doctor=$_POST['doctor'];
@@ -248,7 +249,335 @@ if(isset($_POST['docsub1']))
       
                 
       
+<!-- Preparing the data
+SQL to PHP
+PHP to JAVA
+-->
 
+<?php 
+ $query = "select  username, docFees from doctb";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+      $username[] = $row["username"];
+      $docFees[] = $row["docFees"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   // echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+<hr size="8" width="90%" color="red">  
+
+
+
+
+<!--
+
+
+  Sorting Doctor Name
+
+
+-->
+
+
+<!--Assigning php array to js array -->
+<script>
+var doc_username_js = <?php echo json_encode($username); ?>;
+</script>
+
+<!--Assigning case insentive to lower case -->
+<script>
+var doc_username_js = doc_username_js.map(item => item.toLowerCase());
+</script>
+<!-- converting js variable to Number data type -->
+<script>
+doc_username_js_string = doc_username_js.map(String);
+
+</script>
+
+
+<br><br>
+<!--Making bubble sort-->
+<script>
+function sortItems(doc_username_js_string) {
+	for (let i = 0; i < doc_username_js_string.length; i++) {
+		for (let j = 0; j < doc_username_js_string.length; j++) {
+			if (doc_username_js_string[j] > doc_username_js_string[j + 1]) {
+				let temp = doc_username_js_string[j];
+				doc_username_js_string[j] = doc_username_js_string[j + 1];
+				doc_username_js_string[j + 1] = temp;
+			}
+		}
+	}
+	return doc_username_js_string;
+}
+</script>
+
+<!-- Creation of JS variable in Number datatype -->
+<script>
+var docUsernameToSort = doc_username_js_string;
+var sortedList = sortItems(docUsernameToSort);
+</script>
+
+
+<script>
+ for(let i = 0; i < sortedList.length; i++){ 
+    document.write(sortedList[i]);
+    document.write("<br>");
+    
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<!--
+
+
+  Sorting Doctor Fees
+
+
+-->
+
+
+<!--Assigning php array to js array -->
+<script>
+var doc_username_js = <?php echo json_encode($username); ?>;
+var doc_docFees_js = <?php echo json_encode($docFees); ?>;
+</script>
+
+<!-- converting js variable to Number data type -->
+<script>
+doc_docFees_js_float = doc_docFees_js.map(Number);
+</script>
+
+<!--Making bubble sort-->
+<script>
+function sortItems(doc_docFees_js_float) {
+	for (let i = 0; i < doc_docFees_js_float.length; i++) {
+		for (let j = 0; j < doc_docFees_js_float.length; j++) {
+			if (doc_docFees_js_float[j] > doc_docFees_js_float[j + 1]) {
+				let temp = doc_docFees_js_float[j];
+				doc_docFees_js_float[j] = doc_docFees_js_float[j + 1];
+				doc_docFees_js_float[j + 1] = temp;
+			}
+		}
+	}
+	return doc_docFees_js_float;
+}
+</script>
+
+<!-- Creation of JS variable in Number datatype -->
+<script>
+var feesToSort = doc_docFees_js_float;
+var sortedList = sortItems(feesToSort);
+</script>
+
+
+<script>
+ for(let i = 0; i < sortedList.length; i++){ 
+    document.write(sortedList[i]);
+    document.write("<br>");
+    
+    }
+</script>
+
+
+
+
+<!--Sorting Function -->
+<style>
+.title{
+  text-align:center;
+  padding: 2% 4%;
+  font-family: Arial;
+}
+table{
+  font-size: 20pt;
+  width: 50%;
+  margin: 20px auto;
+}
+table th{
+  padding: 10px;
+background: #f5f5f5;
+color: #000;
+border-right: solid 1px #ddd;
+border-bottom: solid 1px #ddd;
+}
+
+table tr td{
+  padding: 15px;
+line-height: 1.42857143;
+border: none;
+}
+
+table tbody tr:nth-of-type(2n+1) {
+    background: #f5f5f5;
+}
+
+table tr {
+    border-bottom: solid 1px #ddd;
+}
+
+</style>
+
+<p><strong>Click the headers to sort the table.</strong></p>
+<p>The first time you click, the sorting direction is ascending (A to Z).</p>
+<p>Click again, and the sorting direction will be descending (Z to A):</p>
+
+<table id="myTable">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0)">Name</th>
+    <th onclick="sortTable(1)">Country</th>
+    <th onclick="sortTable(2)">Doctor's Fee<th>
+  </tr>
+  <tr>
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+    <td><script>document.write(sortedList[0])</script></td>
+  </tr>
+  <tr>
+    <td>North/South</td>
+    <td>UK</td>
+    <td><script>document.write(sortedList[1])</script></td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+    <td><script>document.write(sortedList[2])</script></td>
+  </tr>
+  <tr>
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+    <td><script>document.write(sortedList[3])</script></td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Italy</td>
+    <td><script>document.write(sortedList[4])</script></td>
+  </tr>
+  <tr>
+    <td>Paris specialites</td>
+    <td>France</td>
+    <td><script>document.write(sortedList[5])</script></td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>UK</td>
+    <td><script>document.write(sortedList[6])</script></td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Canada</td>
+    <td><script>document.write(sortedList[7])</script></td>
+  </tr>
+</table>
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      
+      
+      
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+
+
+      
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
 
 
 
@@ -261,13 +590,40 @@ if(isset($_POST['docsub1']))
       <form class="form-group" action="doctorsearch.php" method="post">
         <div class="row">
 
-        <!--first major changes -->
-
-        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
+        <!--Alter later to search by 7 criteria-->
+        <div class="col-md-4"><label>Search by:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
+                                        <option value="head"  disabled selected>Filter Search by</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="spec" name="spec">Specialization</option>
+                                        <option value="email" name="email">Email</option>
+                                        <option value="password" name="password">Password</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        <option value="gender" name="gender">Gender</option>
+                                        <option value="docContact" name="docContact">Contact</option>
+                                        <option value="docAddress" name="docAddress">Address</option>
+                                        </select>
+                                        </div><br><br>
+        <div class="col-md-10"><input type="text" name="admin-query-doc" placeholder="Enter here" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
-    </div><!--row end -->
-    
+    </div><br>
+
+    <!--Sort by -->
+    <div class="col-md-4"><label>Sort by:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="filteringSort" class="form-control" id="filteringSort" required="required">
+                                        <option value="head"  disabled selected>Filter Sort by</option>
+                                        <option value="username" name="username">Doctor Name</option>
+                                        <option value="fees" name="fees">Fees</option>
+                                        </select>
+                                        </div>
+        <br><div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div></div>
+      </form>
+    </div><br>
+
+
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -276,9 +632,13 @@ if(isset($_POST['docsub1']))
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">Fees</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
                   </tr>
                 </thead>
                 <tbody>
+                <!--Displayer-->
                   <?php 
                     $con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
@@ -290,6 +650,10 @@ if(isset($_POST['docsub1']))
                       $email = $row['email'];
                       $password = $row['password'];
                       $docFees = $row['docFees'];
+                      $gender = $row['gender'];
+                      $docContact = $row['docContact'];
+                      $docAddress = $row['docAddress'];
+
                       
                       echo "<tr>
                         <td>$username</td>
@@ -297,9 +661,11 @@ if(isset($_POST['docsub1']))
                         <td>$email</td>
                         <td>$password</td>
                         <td>$docFees</td>
+                        <td>$gender</td>
+                        <td>$docContact</td>
+                        <td>$docAddress</td>
                       </tr>";
                     }
-
                   ?>
                 </tbody>
               </table>
@@ -307,14 +673,6 @@ if(isset($_POST['docsub1']))
       </div>
     
 
-
-
-
-
-
-
-
-      
     <div class="tab-pane fade" id="list-pat" role="tabpanel" aria-labelledby="list-pat-list">
 
        <div class="col-md-8">
@@ -510,35 +868,72 @@ if(isset($_POST['docsub1']))
 
 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
 
+
+
+
+
+
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
         <form class="form-group" method="post" action="admin-panel1.php">
           <div class="row">
-                  <div class="col-md-4"><label>Doctor Name:</label></div>
-                  <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
-                  <div class="col-md-4"><label>Specialization:</label></div>
-                  <div class="col-md-8">
-                   <select name="special" class="form-control" id="special" required="required">
-                      <option value="head" name="spec" disabled selected>Select Specialization</option>
-                      <option value="General" name="spec">General</option>
-                      <option value="Cardiologist" name="spec">Cardiologist</option>
-                      <option value="Neurologist" name="spec">Neurologist</option>
-                      <option value="Pediatrician" name="spec">Pediatrician</option>
-                    </select>
-                    </div><br><br>
-                  <div class="col-md-4"><label>Email ID:</label></div>
-                  <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
-                  <div class="col-md-4"><label>Password:</label></div>
-                  <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
-                  <div class="col-md-4"><label>Confirm Password:</label></div>
-                  <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
-                   
-                  
-                  <div class="col-md-4"><label>Consultancy Fees:</label></div>
-                  <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+          <div class="col-md-4"><label>Your Name:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control" name="doctor" onkeydown="return alphaOnly(event);" required></div><br><br>
+                                    
+                                    <div class="col-md-4"><label>Contact #:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docContact" required></div><br><br>
+
+                                    <div class="col-md-4"><label>Address:</label></div>
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docAddress" required></div><br><br>
+
+                                    
+
+
+                                    <div class="col-md-4"><label>Specialization:</label></div>
+                                    <div class="col-md-8">
+                                    <select name="special" class="form-control" id="special" required="required">
+                                        <option value="head" name="spec" disabled selected>Select Specialization</option>
+                                        <option value="General" name="spec">General</option>
+                                        <option value="Cardiologist" name="spec">Cardiologist</option>
+                                        <option value="Neurologist" name="spec">Neurologist</option>
+                                        <option value="Pediatrician" name="spec">Pediatrician</option>
+                                        </select>
+                                        </div><br><br>
+                                    <div class="col-md-4"><label>Email ID:</label></div>
+                                    
+                                    <div class="col-md-8"><input type="email"  class="form-control" name="demail" required></div><br><br>
+                                    <div class="col-md-4"><label>Password:</label></div>
+                                    <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
+                                    <div class="col-md-4"><label>Confirm Password:</label></div>
+
+                                    <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
+                                    <div class="col-md-4"><label>Consultancy Fees:</label></div>
+
+                                    <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
+                                       
+                                       
+                                        
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="dgender" value="Male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="dgender" value="Female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+
+                                            <br>
+
                 </div>
           <input type="submit" name="docsub" value="Add Doctor" class="btn btn-primary">
         </form>
       </div>
+
+
+
+
+
 
       <div class="tab-pane fade" id="list-settings1" role="tabpanel" aria-labelledby="list-settings1-list">
         <form class="form-group" method="post" action="admin-panel1.php">
@@ -551,6 +946,7 @@ if(isset($_POST['docsub1']))
           <input type="submit" name="docsub1" value="Delete Doctor" class="btn btn-primary" onclick="confirm('do you really want to delete?')">
         </form>
       </div>
+
 
 
        <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>

@@ -52,7 +52,29 @@
     
 
 
+#table111 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#table111 td, #table111 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table111 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table111 tr:hover {background-color: #ddd;}
+
+#table111 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+    
 
 
 
@@ -115,6 +137,29 @@
 
 
 
+#table222 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table222 td, #table222 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table222 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table222 tr:hover {background-color: #ddd;}
+
+#table222 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
 
 #table100 {
     font-family: Arial, Helvetica, sans-serif;
@@ -156,7 +201,29 @@
 
 #table1100 tr:hover {background-color: #ddd;}
 
-#table1100 th {
+#table11100 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+#table11100 {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table11100 td, #table11100 th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table11100 tr:nth-child(even){background-color: #f2f2f2;}
+
+#table11100 tr:hover {background-color: #ddd;}
+
+#table11100 th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;

@@ -47,6 +47,9 @@ if(isset($_POST['docsub1']))
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <!-- for my table design -->
+    <link rel="stylesheet" href="css/tabledesign.css">
+    <link rel="stylesheet" href="css/buttona.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -248,7 +251,9 @@ if(isset($_POST['docsub1']))
             </div>
       
                 
-    
+
+
+
 <!-- Preparing the data
 SQL to PHP
 PHP to JAVA
@@ -292,62 +297,43 @@ $con->close();
 ?>
 
 
-
-
-<script>
-//assign to a js variable 
-var doc_username_js = <?php echo json_encode($username); ?>;
-var doc_username_js_l = doc_username_js.map(doc_username_js => doc_username_js.toLowerCase());
-
-var doc_username_js_count = <?php echo json_encode($username); ?>;
-var doc_docFees_js = <?php echo json_encode($docFees); ?>;
-</script>
-
-
-
-<script>
-var i = 0 ;
-var j = doc_username_js_count.length;
-</script>
-
-
-
 <script src="Algorithm\Admin\Oyelami_sort.js"></script>
-
-
-
 
 
 
 <!--Hidden Sorting Process-->
 <script>
+//assign to a js variable 
+var doc_username_js = <?php echo json_encode($username); ?>;
+var doc_username_js_l = doc_username_js.map(doc_username_js => doc_username_js.toLowerCase());
+var doc_username_js_count = <?php echo json_encode($username); ?>;
+var doc_docFees_js = <?php echo json_encode($docFees); ?>;
+var doc_docFees_js64 = new Float64Array(doc_docFees_js);
+</script>
+<script>
+var i = 0 ;
+var j = doc_username_js_count.length;
+</script>
 
-
+<script>
   //variable resetter to be used by other call
   var i = 0 ;
   var j = doc_username_js_count.length;
-  
-document.getElementById("SortByName").onclick = Oyelami_sort(doc_username_js_l,doc_docFees_js ); //this is where to display
+document.getElementById("SortByName").onclick = Oyelami_sort(doc_username_js_l,doc_docFees_js64  ); //this is where to display
 
 </script>
-<button id="SortByName" onclick="cocktailSort(doc_username_js_l,doc_docFees_js); Display() ">Sort By Name</button>
-
-
+<button id="SortByName" onclick="cocktailSort(doc_username_js_l,doc_docFees_js64 ); Display() ">Sort By Name</button>
 
 <script>
-
-
 function Display() {
 document.write("<br>");
 document.write(doc_username_js_l);
 document.write("<br>");
-document.write(doc_docFees_js);
+document.write(doc_docFees_js64 );
 document.write("<br>");
 document.write("Does it changed and altered the contents?: " + "<br>");
-document.write(doc_docFees_js);
+document.write(doc_docFees_js64 );
 document.write("    <----------- Yes, ready for cocktail");
-
-
 }
 </script>
 
@@ -355,39 +341,29 @@ document.write("    <----------- Yes, ready for cocktail");
 
 
 
-
+<!--Hidden Sorting Process-->
 <script>
 //assign to a js variable
 //refresher 
 var doc_username_js = <?php echo json_encode($username); ?>;
 var doc_username_js_l = doc_username_js.map(doc_username_js => doc_username_js.toLowerCase());
-
 var doc_username_js_count = <?php echo json_encode($username); ?>;
 var doc_docFees_js = <?php echo json_encode($docFees); ?>;
 var doc_docFees_js64 = new Float64Array(doc_docFees_js);
 </script>
-<!--Hidden Sorting Process-->
+
 
 
 <script>
-
-
   //variable resetter to be used by other call
   var i = 0 ;
   var j = doc_username_js_count.length;
-  
 document.getElementById("SortByNumber").onclick = Oyelami_sort(doc_docFees_js64,doc_username_js_l); //this is where to display
 
 </script>
 <button id="SortByNumber" onclick="cocktailSort(doc_docFees_js64,doc_username_js_l); Display1()" >Sort By Number</button>
 
-
-
-
-
 <script>
-
-
 function Display1() {
     document.write("<br>");
     document.write(doc_username_js_l);
@@ -398,15 +374,6 @@ function Display1() {
     document.write(doc_docFees_js64);
     document.write("    <----------- Yes, ready for cocktailss");
 }
-
-
-
-
-
-
-
-
-
 </script>
 
 
@@ -457,7 +424,7 @@ function Display1() {
 
 
 
-         <!--Sort by -->
+         <!--Sort by 
     <div class="col-md-4">
       <label>Sort by:</label>
     </div>
@@ -472,10 +439,210 @@ function Display1() {
         <div class="col-md-2"><input type="submit" name="doctor_sort_submit" class="btn btn-primary" value="Sort"></div>
       </form>
     </div>
-    <br>
+    <br>-->
 
-    <input id="clickMe" type="button" value="Sort By Doctor Name" onclick="doFunction();" />
-    <input id="clickMe" type="button" value="Sort By Doctor Fees" onclick="doFunction();" />
+    <!--<input id="clickMe" type="button" value="Sort By Doctor Name" onclick="doFunction();" />
+    <input id="clickMe" type="button" value="Sort By Doctor Fees" onclick="doFunction();" />-->
+    <br>
+<!--
+    <table class="table table-hover">
+          <thead>
+            <tr>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Specialization</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+            </tr>
+          </thead>
+          <tbody>
+-->
+
+
+
+
+
+
+
+<div class='title'>
+<h1>Table Sorting in JavaScript (Oyelami + CockTail Sort)</h1>
+</div>
+
+<button id="btn100" class="btn btn-primary">Original Order</button>
+<button id="btn1" class="btn btn-primary">Sort By Doctor Name</button>
+<button id="btn2" class="btn btn-primary">Sort By Fees</button>
+<br><br>
+
+
+<!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+
+<table id="table1" style="width:100%;display:none">
+
+            <script>
+              Oyelami_sort(doc_username_js_l,doc_docFees_js64 );
+              cocktailSort(doc_username_js_l,doc_docFees_js64);
+  </script>
+            <tr>
+              <th>Doctor Name</th>
+              <th>Fees</th>
+            </tr>
+
+            <?php 
+              //defining conditions
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              $query = "select username from doctb";
+              $result = mysqli_query($con,$query);
+                        
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+
+            <tr>
+              <td>
+                            <script type="text/javascript">
+                            document.write(doc_username_js_l[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+                            <script type="text/javascript">
+                            //var number = 123;
+                            //document.write(number)
+                            document.write(doc_docFees_js64[counter]);
+                          counter++;
+                            </script>
+              </td>
+            </tr>
+            <?php }
+          ?>
+</table>
+
+
+
+<!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table2" style="width:100%;display:none">
+<tr>
+    <th>Doctor Name</th>
+    <th>Fees</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select username from doctb";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+  ?>
+
+  <tr>
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(doc_username_js_l[counter]);
+                  
+                 
+                  </script>
+    </td>
+
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(doc_docFees_js64[counter]);
+                 counter++;
+                  </script>
+    </td>
+  </tr>
+  <?php }
+?>
+</table>
+
+
+
+
+<!--table100-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table100" style="width:100%;">
+<tr>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Specialization</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select * from doctb";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+      $username = $row['username'];
+      $spec = $row['spec'];
+      $email = $row['email'];
+      $password = $row['password'];
+      $docFees = $row['docFees'];
+      $gender = $row['gender'];
+      $docContact = $row['docContact'];
+      $docAddress = $row['docAddress'];
+
+      
+      echo "<tr>
+        <td>$username</td>
+        <td>$spec</td>
+        <td>$email</td>
+        <td>$password</td>
+        <td>$docFees</td>
+        <td>$gender</td>
+        <td>$docContact</td>
+        <td>$docAddress</td>
+      </tr>";
+    }
+  ?>
+</table>
+
+
+<script>
+document.getElementById("btn1").addEventListener("click", function(){
+
+  document.getElementById("table1").style.display = "block";
+  document.getElementById("table2").style.display = "none";//hide
+  document.getElementById("table100").style.display = "none";//hide
+});
+document.getElementById("btn2").addEventListener("click", function(){
+  document.getElementById("table2").style.display = "block";
+  document.getElementById("table1").style.display = "none";//hide
+  document.getElementById("table100").style.display = "none";//hide
+});
+document.getElementById("btn100").addEventListener("click", function(){
+  document.getElementById("table100").style.display = "block";
+  document.getElementById("table1").style.display = "none";//hide
+  document.getElementById("table2").style.display = "none";//hide
+});
+</script>
 
 
 
@@ -522,7 +689,7 @@ function Display1() {
 
 
 
-<!--Doctor List -->
+<!--Doctor List 
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -536,10 +703,11 @@ function Display1() {
                     <th scope="col">Address</th>
                   </tr>
                 </thead>
-                <tbody>
-                <!--Displayer-->
+                <tbody>-->
+                  
+                <!--Displayer
                   <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
+                    /*$con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
                     $query = "select * from doctb";
                     $result = mysqli_query($con,$query);
@@ -564,12 +732,12 @@ function Display1() {
                         <td>$docContact</td>
                         <td>$docAddress</td>
                       </tr>";
-                    }
+                    }*/
                   ?>
                 </tbody>
               </table>
-        <br>
-      </div>
+        <br>-->
+      </div><!-- end of the div for doc-->
     
 
 

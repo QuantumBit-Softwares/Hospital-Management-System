@@ -1709,7 +1709,7 @@ var j = app_pid_js_count.length;
 document.getElementById("SortByappID").onclick = Oyelami_sort(app_pid_js64,app_doctor_js_l  ); //this is where to display
 
 </script>
-<button id="SortByappID" onclick="cocktailSort(app_pid_js64,app_doctor_js_l ); Display6() ">Sort By Patient ID</button>
+<button id="SortByappID" onclick="cocktailSort(app_pid_js64,app_doctor_js_l ); Display6() ">Sort By Patient ID - Appointment</button>
 
 <script>
 function Display6() {
@@ -1752,7 +1752,7 @@ var app_doctor_js_l = app_doctor_js.map(app_doctor_js => app_doctor_js.toLowerCa
 document.getElementById("SortByappDoctor").onclick = Oyelami_sort(app_doctor_js_l,app_pid_js64); //this is where to display
 
 </script>
-<button id="SortByappDoctor" onclick="cocktailSort(app_doctor_js_l,app_pid_js64); Display7()" >Sort By Patient's Doctor </button>
+<button id="SortByappDoctor" onclick="cocktailSort(app_doctor_js_l,app_pid_js64); Display7()" >Sort By Patient's Doctor - Appointment</button>
 
 <script>
 function Display7() {
@@ -1769,22 +1769,7 @@ function Display7() {
 
 
 <!--maybe an error to displayN()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-->
 
 
 
@@ -1808,8 +1793,8 @@ function Display7() {
 </div>
 
 <button id="btn11100" class="btn btn-primary">Original Order</button>
-<button id="btn111" class="btn btn-primary">Sort By Patient ID</button>
-<button id="btn222" class="btn btn-primary">Sort By Patient's Doctor</button>
+<button id="btn111" class="btn btn-primary">Sort By Patient ID - Appointment</button>
+<button id="btn222" class="btn btn-primary">Sort By Patient's Doctor - Appointment</button>
 <br><br>
 
 
@@ -2061,7 +2046,7 @@ document.getElementById("btn11100").addEventListener("click", function(){
 
 
 
-      
+
 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
 
 

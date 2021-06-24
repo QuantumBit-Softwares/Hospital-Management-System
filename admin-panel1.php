@@ -323,8 +323,8 @@ var j = doc_username_js_count.length;
 document.getElementById("SortByName").onclick = Oyelami_sort(doc_username_js_l,doc_docFees_js64  ); //this is where to display
 
 </script>
-<button id="SortByName" onclick="cocktailSort(doc_username_js_l,doc_docFees_js64 ); Display() ">Sort By Name</button>
-
+<!--<button id="SortByName" onclick="cocktailSort(doc_username_js_l,doc_docFees_js64 ); Display() ">Sort By Name</button>
+-->
 <script>
 function Display() {
 document.write("<br>");
@@ -362,8 +362,8 @@ var doc_docFees_js64 = new Float64Array(doc_docFees_js);
 document.getElementById("SortByNumber").onclick = Oyelami_sort(doc_docFees_js64,doc_username_js_l); //this is where to display
 
 </script>
-<button id="SortByNumber" onclick="cocktailSort(doc_docFees_js64,doc_username_js_l); Display1()" >Sort By Number</button>
-
+<!--<button id="SortByNumber" onclick="cocktailSort(doc_docFees_js64,doc_username_js_l); Display1()" >Sort By Number</button>
+-->
 <script>
 function Display1() {
     document.write("<br>");
@@ -836,8 +836,8 @@ var j = pat_fname_js_count.length;
 document.getElementById("SortByfname").onclick = Oyelami_sort(pat_fname_js_l,pat_lname_js_l  ); //this is where to display
 
 </script>
-<button id="SortByfname" onclick="cocktailSort(pat_fname_js_l,pat_lname_js_l ); Display2() ">Sort By First Name</button>
-
+<!--<button id="SortByfname" onclick="cocktailSort(pat_fname_js_l,pat_lname_js_l ); Display2() ">Sort By First Name</button>
+-->
 <script>
 function Display2() {
 document.write("<br>");
@@ -879,7 +879,8 @@ var pat_lname_js_l = pat_lname_js.map(pat_lname_js => pat_lname_js.toLowerCase()
 document.getElementById("SortBylname").onclick = Oyelami_sort(pat_lname_js_l,pat_fname_js_l); //this is where to display
 
 </script>
-<button id="SortBylname" onclick="cocktailSort(pat_lname_js_l,pat_fname_js_l); Display3()" >Sort By Last Name</button>
+<!--<button id="SortBylname" onclick="cocktailSort(pat_lname_js_l,pat_fname_js_l); Display3()" >Sort By Last Name</button>
+-->
 
 <script>
 function Display3() {
@@ -1327,8 +1328,8 @@ var j = pres_lname_js_count.length;
 document.getElementById("SortBypreslname").onclick = Oyelami_sort(pres_lname_js_l,pres_disease_js_l  ); //this is where to display
 
 </script>
-<button id="SortBypreslname" onclick="cocktailSort(pres_lname_js_l,pres_disease_js_l ); Display8() ">Sort By Pres Last Name</button>
-
+<!--<button id="SortBypreslname" onclick="cocktailSort(pres_lname_js_l,pres_disease_js_l ); Display8() ">Sort By Pres Last Name</button>
+-->
 <script>
 function Display8() {
 document.write("<br>");
@@ -1370,8 +1371,8 @@ var j = pres_lname_js_count.length;
 document.getElementById("SortBypresDisease").onclick = Oyelami_sort(pres_disease_js_l,pres_lname_js_l); //this is where to display
 
 </script>
-<button id="SortBypresDisease" onclick="cocktailSort(pres_disease_js_l,pres_lname_js_l); Display9()" >Sort By Patient's Disease</button>
-
+<!--<button id="SortBypresDisease" onclick="cocktailSort(pres_disease_js_l,pres_lname_js_l); Display9()" >Sort By Patient's Disease</button>
+-->
 <script>
 function Display9() {
     document.write("<br>");
@@ -1709,8 +1710,8 @@ var j = app_pid_js_count.length;
 document.getElementById("SortByappID").onclick = Oyelami_sort(app_pid_js64,app_doctor_js_l  ); //this is where to display
 
 </script>
-<button id="SortByappID" onclick="cocktailSort(app_pid_js64,app_doctor_js_l ); Display6() ">Sort By Patient ID - Appointment</button>
-
+<!--<button id="SortByappID" onclick="cocktailSort(app_pid_js64,app_doctor_js_l ); Display6() ">Sort By Patient ID - Appointment</button>
+-->
 <script>
 function Display6() {
 document.write("<br>");
@@ -1752,7 +1753,8 @@ var app_doctor_js_l = app_doctor_js.map(app_doctor_js => app_doctor_js.toLowerCa
 document.getElementById("SortByappDoctor").onclick = Oyelami_sort(app_doctor_js_l,app_pid_js64); //this is where to display
 
 </script>
-<button id="SortByappDoctor" onclick="cocktailSort(app_doctor_js_l,app_pid_js64); Display7()" >Sort By Patient's Doctor - Appointment</button>
+<!--<button id="SortByappDoctor" onclick="cocktailSort(app_doctor_js_l,app_pid_js64); Display7()" >Sort By Patient's Doctor - Appointment</button>
+-->
 
 <script>
 function Display7() {

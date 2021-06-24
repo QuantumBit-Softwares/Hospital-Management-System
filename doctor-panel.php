@@ -42,6 +42,10 @@ if(isset($_GET['cancel']))
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <script src="Algorithm\Doctor\Oyelami_sort.js"></script>
+    <link rel="stylesheet" href="css/tabledesign.css">
+    <link rel="stylesheet" href="css/buttona.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/css/setlocation.css"/>
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -92,10 +96,12 @@ if(isset($_GET['cancel']))
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
+    
     <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
       <input class="form-control mr-sm-2" type="text" placeholder="Enter contact number" aria-label="Search" name="contact">
       <input type="submit" class="btn btn-outline-light" id="inputbtn" name="search_submit" value="Search">
     </form>
+
   </div>
 </nav>
   </head>
@@ -214,12 +220,337 @@ if(isset($_GET['cancel']))
     
 
 
+<!-- appointment list -->
+<?php
+//array resetter
+$pid = array();
+$appdate = array();
+
+ $query = "select  pid, userStatus, doctorStatus from appointmenttb where doctor= '$doctor'; ";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+
+
+      $pid[] = $row["pid"];
+      $userStatus[] = $row["userStatus"];
+      $doctorStatus[] = $row["doctorStatus"];
+     // $appdate[] = $row["appdate"];
+
+      //put the status here
+      if(($row['userStatus']==1) && ($row['doctorStatus']==1))
+      {
+        $status[] = 1; //true 
+      } else {
+        $status[] = 0; //not active
+      }
+
+
+
+
+
+
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   //echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable 
+
+//main counter
+var pid_js_count = <?php echo json_encode($pid); ?>;
+
+
+var pid_js = <?php echo json_encode($pid); ?>;
+var pid1_js64 = new Float64Array(pid_js);
+
+
+var status_js = <?php echo json_encode($status); ?>;
+
+/*
+//diagnosing
+document.write("content1: " + pid1_js64);
+
+
+//diagnosing
+document.write("          content2: " + status_js);*/
+</script>
+
+
+<script>
+var i = 0 ;
+var j = pid_js_count.length;
+</script>
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = pid_js_count.length;
+document.getElementById("SortBystatus").onclick = Oyelami_sort(status_js,pid1_js64  ); //this is where to display
+
+</script>
+<!--<button id="SortBystatus" onclick="cocktailSort(status_js,pid1_js64 ); Display13() ">Sort By Appointment Status</button>
+-->
+
+<script>
+function Display13() {
+document.write("<br>");
+document.write(pid1_js64);
+document.write("<br>");
+document.write(status_js );
+document.write("<br>");
+document.write("FNameFNameDoes it changed and altered the contents?: FName " + "<br>");
+document.write(status_js );
+document.write("    <----------- Yes, ready for cocktail");
+}
+</script>
+<!--above code is done -->
+
+
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable
+//refresher 
+//main counter
+var pid_js_count = <?php echo json_encode($pid); ?>;
+
+
+var pid_js = <?php echo json_encode($pid); ?>;
+var pid1_js64 = new Float64Array(pid_js);
+
+
+var status_js = <?php echo json_encode($status); ?>;
+
+</script>
+
+
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+var j = pid_js_count.length;
+document.getElementById("SortByPID1").onclick = Oyelami_sort(pid1_js64,status_js); //this is where to display
+
+</script>
+<!--<button id="SortByPID1" onclick="cocktailSort(pid1_js64,status_js); Display14()" >Sort By Patient's ID - Appointment </button>
+-->
+<script>
+function Display14() {
+    document.write("<br>");
+    document.write(pid1_js64);
+    document.write("<br>");
+    document.write(status_js);
+    document.write("<br>");
+    document.write("LnameLnameLnameDoes it changed and altered the contents? Lname: " + "<br>");
+    document.write(status_js);
+    document.write("    <----------- Yes, ready for cocktailss");
+}
+</script>
+
+
 
     <div class="tab-pane fade" id="list-app" role="tabpanel" aria-labelledby="list-home-list">
         
-              <table class="table table-hover">
-                <thead>
-                  <tr>
+
+
+
+
+
+
+
+    <div class='title'>
+<h1>Table Sorting in JavaScript (Oyelami + CockTail Sort)</h1>
+</div>
+
+<button id="btn11005" class="btn btn-primary">Original Order</button>
+<button id="btn115" class="btn btn-primary">Sort By Appointment Status </button>
+<button id="btn225" class="btn btn-primary">Sort By Patient ID </button>
+<br><br>
+
+
+
+
+
+
+<!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+
+<table id="table115" style="width:100%;display:none">
+
+            <script>
+              Oyelami_sort(status_js,pid1_js64 );
+              cocktailSort(status_js,pid1_js64);
+  </script>
+            <tr>
+              <th>Patient ID</th>
+              <th>Status</th>
+              <th>Prescribe</th>
+            </tr>
+
+            <?php 
+              //defining conditions
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              $query = "select  pid, userStatus, doctorStatus from appointmenttb where doctor= '$doctor'; ";
+             
+              $result = mysqli_query($con,$query);
+                        
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+
+            <tr>
+              <td>
+                            <script type="text/javascript">
+                            document.write(pid1_js64[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+                            <script type="text/javascript">
+                            //var number = 123;
+                            //document.write(number)
+                            document.write(status_js[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+
+
+              <script>
+               if((status_js[counter]) == 1){
+              document.write('<button class="btn btn-success">Prescibe</button>')
+               }else{
+                document.write('<button class="btn btn-danger">Inactive</button>')
+               }
+               counter++;
+              
+              </script>
+
+
+
+              </td>
+            </tr>
+            <?php }
+          ?>
+</table>
+
+
+
+<!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table225" style="width:100%;display:none">
+
+<script>
+              Oyelami_sort(pid1_js64, status_js );
+              cocktailSort(pid1_js64, status_js);
+  </script>
+
+<tr>
+    <th>Patient ID</th>
+    <th>Status</th>
+    <th>Prescribe</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select  pid, userStatus, doctorStatus from appointmenttb where doctor= '$doctor'; ";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+  ?>
+
+  <tr>
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pid1_js64[counter]);
+                  
+                 
+                  </script>
+    </td>
+
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(status_js[counter]);
+                
+                  </script>
+    </td>
+    
+    <td>
+
+<script>
+    if((status_js[counter]) == 1){
+              document.write('<button class="btn btn-success">Prescibe</button>')
+               }else{
+                document.write('<button class="btn btn-danger">Inactive</button>')
+               }
+               counter++;
+</script>
+
+
+</td>
+
+
+
+  </tr>
+  <?php }
+?>
+</table>
+
+
+
+
+<!--table100-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table11005" style="width:100%; ">
+<tr>
                     <th scope="col">Patient ID</th>
                     <th scope="col">Appointment ID</th>
                     <th scope="col">First Name</th>
@@ -232,91 +563,407 @@ if(isset($_GET['cancel']))
                     <th scope="col">Current Status</th>
                     <th scope="col">Action</th>
                     <th scope="col">Prescribe</th>
-                    <th scope="col">Prescribe</th>
+                  
+  </tr>
 
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
-                    $dname = $_SESSION['dname'];
-                    $query = "select pid,ID,fname,lname,gender,email,contact,appdate,apptime,userStatus,doctorStatus from appointmenttb where doctor='$dname';";
-                    $result = mysqli_query($con,$query);
-                    while ($row = mysqli_fetch_array($result)){
-                      ?>
-                      <tr>
-                      <td><?php echo $row['pid'];?></td>
-                        <td><?php echo $row['ID'];?></td>
-                        <td><?php echo $row['fname'];?></td>
-                        <td><?php echo $row['lname'];?></td>
-                        <td><?php echo $row['gender'];?></td>
-                        <td><?php echo $row['email'];?></td>
-                        <td><?php echo $row['contact'];?></td>
-                        <td><?php echo $row['appdate'];?></td>
-                        <td><?php echo $row['apptime'];?></td>
-                        <td>
-                    <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                    {
-                      echo "Active";
-                    }
-                    if(($row['userStatus']==0) && ($row['doctorStatus']==1))  
-                    {
-                      echo "Cancelled by Patient";
-                    }
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    
+    $query = "select * from appointmenttb where doctor = '$doctor'; ";
+    $result = mysqli_query($con,$query);
+    while ($row = mysqli_fetch_array($result)){
+      ?>
+      <tr>
+      <td><?php echo $row['pid'];?></td>
+        <td><?php echo $row['ID'];?></td>
+        <td><?php echo $row['fname'];?></td>
+        <td><?php echo $row['lname'];?></td>
+        <td><?php echo $row['gender'];?></td>
+        <td><?php echo $row['email'];?></td>
+        <td><?php echo $row['contact'];?></td>
+        <td><?php echo $row['appdate'];?></td>
+        <td><?php echo $row['apptime'];?></td>
+     
+     
+     
+        <td>
+    <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+    {
+      echo "Active";
+    }
+    if(($row['userStatus']==0) && ($row['doctorStatus']==1))  
+    {
+      echo "Cancelled by Patient";
+    }
 
-                    if(($row['userStatus']==1) && ($row['doctorStatus']==0))  
-                    {
-                      echo "Cancelled by You";
-                    }
-                        ?></td>
-
-                     <td>
-                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                        { ?>
-
-													
-	                        <a href="doctor-panel.php?ID=<?php echo $row['ID']?>&cancel=update" 
-                              onClick="return confirm('Are you sure you want to cancel this appointment ?')"
-                              title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
-	                        <?php } else {
-
-                                echo "Cancelled";
-                                } ?>
-                        
-                        </td>
-
-                        <td>
-
-                        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
-                        { ?>
-
-                        <a href="prescribe.php?pid=<?php echo $row['pid']?>&ID=<?php echo $row['ID']?>&fname=<?php echo $row['fname']?>&lname=<?php echo $row['lname']?>&appdate=<?php echo $row['appdate']?>&apptime=<?php echo $row['apptime']?>"
-                        tooltip-placement="top" tooltip="Remove" title="prescribe">
-                        <button class="btn btn-success">Prescibe</button></a>
-                        <?php } else {
-
-                            echo "-";
-                            } ?>
-                        
-                        </td>
+    if(($row['userStatus']==1) && ($row['doctorStatus']==0))  
+    {
+      echo "Cancelled by You";
+    }
+        ?></td>
 
 
-                      </tr></a>
-                    <?php } ?>
-                </tbody>
-              </table>
-        <br>
+
+
+
+     <td>
+        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+        { ?>
+
+          
+          <a href="doctor-panel.php?ID=<?php echo $row['ID']?>&cancel=update" 
+              onClick="return confirm('Are you sure you want to cancel this appointment ?')"
+              title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
+          <?php } else {
+
+                echo "Cancelled";
+                } ?>
+        
+        </td>
+
+        <td>
+
+        <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+        { ?>
+
+        <a href="prescribe.php?pid=<?php echo $row['pid']?>&ID=<?php echo $row['ID']?>&fname=<?php echo $row['fname']?>&lname=<?php echo $row['lname']?>&appdate=<?php echo $row['appdate']?>&apptime=<?php echo $row['apptime']?>"
+        tooltip-placement="top" tooltip="Remove" title="prescribe">
+        <button class="btn btn-success">Prescibe</button></a>
+        <?php } else {
+
+            echo "-";
+            } ?>
+        
+        </td>
+
+
+
+
+
+
+      </tr></a>
+    <?php } ?>
+
+</table>
+
+
+<script>
+document.getElementById("btn115").addEventListener("click", function(){
+
+  document.getElementById("table115").style.display = "block";
+  document.getElementById("table225").style.display = "none";//hide
+  document.getElementById("table11005").style.display = "none";//hide
+});
+document.getElementById("btn225").addEventListener("click", function(){
+  document.getElementById("table225").style.display = "block";
+  document.getElementById("table115").style.display = "none";//hide
+  document.getElementById("table11005").style.display = "none";//hide
+});
+document.getElementById("btn11005").addEventListener("click", function(){
+  document.getElementById("table11005").style.display = "block";
+  document.getElementById("table115").style.display = "none";//hide
+  document.getElementById("table225").style.display = "none";//hide
+});
+</script>
+
+
+
+
+
+
+
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="Algorithm\Doctor\Oyelami_sort.js"></script>
+
+<!--list pres -->
+
+
+<?php 
+
+//array resetter
+$pid = array();
+$appdate = array();
+
+ $query = "select  pid, appdate from prestb where doctor= '$doctor'; ";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+
+
+      $pid[] = $row["pid"];
+      $appdate[] = $row["appdate"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   //echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable 
+
+//main counter
+var pid_js_count = <?php echo json_encode($pid); ?>;
+
+
+var pid_js = <?php echo json_encode($pid); ?>;
+var pid_js64 = new Float64Array(pid_js);
+
+var appdate_js = <?php echo json_encode($appdate); ?>;
+
+</script>
+
+
+<script>
+var i = 0 ;
+var j = pid_js_count.length;
+</script>
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = pid_js_count.length;
+document.getElementById("SortByPID").onclick = Oyelami_sort(pid_js64,appdate_js  ); //this is where to display
+
+</script>
+<!--<button id="SortByPID" onclick="cocktailSort(pid_js64,appdate_js ); Display11() ">Sort By Patient ID - Prescription</button>
+-->
+<script>
+function Display11() {
+document.write("<br>");
+document.write(pid_js64);
+document.write("<br>");
+document.write(appdate_js );
+document.write("<br>");
+document.write("FNameFNameDoes it changed and altered the contents?: FName " + "<br>");
+document.write(appdate_js );
+document.write("    <----------- Yes, ready for cocktail");
+}
+</script>
+<!--above code is done -->
+
+
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable
+//refresher 
+//main counter
+var pid_js_count = <?php echo json_encode($pid); ?>;
+
+
+var pid_js = <?php echo json_encode($pid); ?>;
+var pid_js64 = new Float64Array(pid_js);
+
+var appdate_js = <?php echo json_encode($appdate); ?>;
+
+</script>
+
+
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+var j = pid_js_count.length;
+document.getElementById("SortByAPP").onclick = Oyelami_sort(appdate_js,pid_js64); //this is where to display
+
+</script>
+<!--<button id="SortByAPP" onclick="cocktailSort(appdate_js,pid_js64); Display12()" >Sort By Patient's Appointment - Prescription </button>
+-->
+
+<script>
+function Display12() {
+    document.write("<br>");
+    document.write(pid_js64);
+    document.write("<br>");
+    document.write(appdate_js);
+    document.write("<br>");
+    document.write("LnameLnameLnameDoes it changed and altered the contents? Lname: " + "<br>");
+    document.write(appdate_js);
+    document.write("    <----------- Yes, ready for cocktailss");
+}
+</script>
+
+
+
+
 
       
 
       <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
-        <table class="table table-hover">
-                <thead>
-                  <tr>
-                    
-                    <th scope="col">Patient ID</th>
+
+
+
+      <div class='title'>
+<h1>Table Sorting in JavaScript (Oyelami + CockTail Sort)</h1>
+</div>
+
+<button id="btn100" class="btn btn-primary">Original Order</button>
+<button id="btn1" class="btn btn-primary">Sort By Patient ID</button>
+<button id="btn2" class="btn btn-primary">Sort By Appointment Date</button>
+<br><br>
+
+
+<!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+
+<table id="table1" style="width:100%;display:none">
+
+            <script>
+              Oyelami_sort(pid_js64,appdate_js );
+              cocktailSort(pid_js64,appdate_js);
+  </script>
+            <tr>
+              <th>Patient ID</th>
+              <th>Appointment Date</th>
+            </tr>
+
+            <?php 
+              //defining conditions
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              $query = "select  pid, appdate from prestb where doctor= '$doctor'; ";
+              $result = mysqli_query($con,$query);
+                        
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+
+            <tr>
+              <td>
+                            <script type="text/javascript">
+                            document.write(pid_js64[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+                            <script type="text/javascript">
+                            //var number = 123;
+                            //document.write(number)
+                            document.write(appdate_js[counter]);
+                          counter++;
+                            </script>
+              </td>
+            </tr>
+            <?php }
+          ?>
+</table>
+
+
+
+<!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table2" style="width:100%;display:none">
+
+<script>
+              Oyelami_sort(appdate_js, pid_js64 );
+              cocktailSort(appdate_js, pid_js64);
+  </script>
+
+<tr>
+    <th>Patient ID</th>
+    <th>Appointment Date</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select  pid, appdate from prestb where doctor= '$doctor'; ";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+  ?>
+
+  <tr>
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pid_js64[counter]);
+                  
+                 
+                  </script>
+    </td>
+
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(appdate_js[counter]);
+                 counter++;
+                  </script>
+    </td>
+  </tr>
+  <?php }
+?>
+</table>
+
+
+
+
+<!--table100-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table100" style="width:100%;">
+<tr>
+<th scope="col">Patient ID</th>
                     
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
@@ -325,42 +972,65 @@ if(isset($_GET['cancel']))
                     <th scope="col">Appointment Time</th>
                     <th scope="col">Disease</th>
                     <th scope="col">Allergy</th>
-                    <th scope="col">Allergy</th>
+                   
                     <th scope="col">Prescribe</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
+  </tr>
 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select  * from prestb where doctor= '$doctor'; ";
+    $result = mysqli_query($con,$query);
+       
+    while ($row = mysqli_fetch_array($result)){
+      ?>
+          <tr>
+            <td><?php echo $row['pid'];?></td>
+            <td><?php echo $row['fname'];?></td>
+            <td><?php echo $row['lname'];?></td>
+            <td><?php echo $row['ID'];?></td>
+            
+            <td><?php echo $row['appdate'];?></td>
+            <td><?php echo $row['apptime'];?></td>
+            <td><?php echo $row['disease'];?></td>
+            <td><?php echo $row['allergy'];?></td>
+            <td><?php echo $row['prescription'];?></td>
+        
+          </tr>
 
-                    $query = "select pid,fname,lname,ID,appdate,apptime,disease,allergy,prescription from prestb where doctor='$doctor';";
-                    
-                    $result = mysqli_query($con,$query);
-                    if(!$result){
-                      echo mysqli_error($con);
-                    }
-                    
+    
+        <?php }
+        ?>
+ 
+</div>
 
-                    while ($row = mysqli_fetch_array($result)){
-                  ?>
-                      <tr>
-                        <td><?php echo $row['pid'];?></td>
-                        <td><?php echo $row['fname'];?></td>
-                        <td><?php echo $row['lname'];?></td>
-                        <td><?php echo $row['ID'];?></td>
-                        
-                        <td><?php echo $row['appdate'];?></td>
-                        <td><?php echo $row['apptime'];?></td>
-                        <td><?php echo $row['disease'];?></td>
-                        <td><?php echo $row['allergy'];?></td>
-                        <td><?php echo $row['prescription'];?></td>
-                    
-                      </tr>
-                    <?php }
-                    ?>
-                </tbody>
+
+
+
+
+<script>
+document.getElementById("btn1").addEventListener("click", function(){
+
+  document.getElementById("table1").style.display = "block";
+  document.getElementById("table2").style.display = "none";//hide
+  document.getElementById("table100").style.display = "none";//hide
+});
+document.getElementById("btn2").addEventListener("click", function(){
+  document.getElementById("table2").style.display = "block";
+  document.getElementById("table1").style.display = "none";//hide
+  document.getElementById("table100").style.display = "none";//hide
+});
+document.getElementById("btn100").addEventListener("click", function(){
+  document.getElementById("table100").style.display = "block";
+  document.getElementById("table1").style.display = "none";//hide
+  document.getElementById("table2").style.display = "none";//hide
+});
+</script>
+
+</div>
+
+        <table class="table table-hover">
               </table>
       </div>
 

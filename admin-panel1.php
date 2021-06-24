@@ -1255,18 +1255,272 @@ document.getElementById("btn1100").addEventListener("click", function(){
 
 
 <!--prescription sort -->
+
+
+
+<?php 
+ $query = "select  lname, disease from prestb";
+$result = mysqli_query($con,$query);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  //assigning sql query in array in PHP
+
+  //defining the size of the row
+  $num = ($result->num_rows);
+  
+  //defining row
+  $row = $result->fetch_assoc();
+
+  //resetter set lname to empty value again, reintialize to main state
+  $lname = array();
+
+  //defining the for loop to assign sql values to each index in array php
+  for ($i = 0; $i < $num; $i++){
+      //defining the array name
+      $lname[] = $row["lname"];
+      $disease[] = $row["disease"];
+      $row = $result->fetch_assoc();
+  }
+
+  //print the content of the array to debug
+  for ($i = 0; $i < $num; $i++){
+    //defining the array name
+    //echo  $username[$i] .  "<br />";
+   //echo  $docFees[$i] .  "<br />";
+}
+}
+else {
+  echo "0 results";
+
+}
+$con->close();
+?>
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable 
+
+//main counter
+var pres_lname_js_count = <?php echo json_encode($lname); ?>;
+
+
+var pres_lname_js = <?php echo json_encode($lname); ?>;
+var pres_lname_js_l = pres_lname_js.map(pres_lname_js => pres_lname_js.toLowerCase());
+
+var pres_disease_js = <?php echo json_encode($disease); ?>;
+var pres_disease_js_l = pres_disease_js.map(pres_disease_js => pres_disease_js.toLowerCase());
+
+</script>
+
+
+<script>
+var i = 0 ;
+var j = pres_lname_js_count.length;
+</script>
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+  var j = pres_lname_js_count.length;
+document.getElementById("SortBypreslname").onclick = Oyelami_sort(pres_lname_js_l,pres_disease_js_l  ); //this is where to display
+
+</script>
+<button id="SortBypreslname" onclick="cocktailSort(pres_lname_js_l,pres_disease_js_l ); Display8() ">Sort By Pres Last Name</button>
+
+<script>
+function Display8() {
+document.write("<br>");
+document.write(pres_lname_js_l);
+document.write("<br>");
+document.write(pres_disease_js_l );
+document.write("<br>");
+document.write("FNameFNameDoes it changed and altered the contents?: FName " + "<br>");
+document.write(pres_disease_js_l );
+document.write("    <----------- Yes, ready for cocktail");
+}
+</script>
+
+
+
+
+
+<!--Hidden Sorting Process-->
+<script>
+//assign to a js variable
+//refresher 
+//main counter
+var pres_lname_js_count = <?php echo json_encode($lname); ?>;
+
+
+var pres_lname_js = <?php echo json_encode($lname); ?>;
+var pres_lname_js_l = pres_lname_js.map(pres_lname_js => pres_lname_js.toLowerCase());
+
+var pres_disease_js = <?php echo json_encode($disease); ?>;
+var pres_disease_js_l = pres_disease_js.map(pres_disease_js => pres_disease_js.toLowerCase());
+</script>
+
+
+
+<script>
+  //variable resetter to be used by other call
+  var i = 0 ;
+var j = pres_lname_js_count.length;
+document.getElementById("SortBypresDisease").onclick = Oyelami_sort(pres_disease_js_l,pres_lname_js_l); //this is where to display
+
+</script>
+<button id="SortBypresDisease" onclick="cocktailSort(pres_disease_js_l,pres_lname_js_l); Display9()" >Sort By Patient's Disease</button>
+
+<script>
+function Display9() {
+    document.write("<br>");
+    document.write(pres_lname_js_l);
+    document.write("<br>");
+    document.write(pres_disease_js_l);
+    document.write("<br>");
+    document.write("LnameLnameLnameDoes it changed and altered the contents? Lname: " + "<br>");
+    document.write(pres_disease_js_l);
+    document.write("    <----------- Yes, ready for cocktailss");
+}
+</script>
+
+
+
+
+
+
 <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
 
-       <div class="col-md-8">
+       <div class="col-md-8"></div>
   
-        <div class="row">
-        
-    
-        
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                  <th scope="col">Doctor</th>
+      <!--  <div class="row">-->
+
+
+
+      <div class='title'>
+<h1>Table Sorting in JavaScript (Oyelami + CockTail Sort)</h1>
+</div>
+
+<button id="btn111100" class="btn btn-primary">Original Order</button>
+<button id="btn1111" class="btn btn-primary">Sort By Patient's Last Name</button>
+<button id="btn2222" class="btn btn-primary">Sort By Patient's Disease</button>
+<br><br>
+
+
+<!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1--><!--table1-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+
+<table id="table1111" style="width:100%;display:none">
+
+            <script>
+              Oyelami_sort(pres_lname_js,pres_disease_js_l );
+              cocktailSort(pres_lname_js,pres_disease_js_l);
+  </script>
+            <tr>
+              <th>Patient's Last Name</th>
+              <th>Patient's Disease</th>
+            </tr>
+
+            <?php 
+              //defining conditions
+              $con=mysqli_connect("localhost","root","","myhmsdb");
+              global $con;
+              $query = "select lname from prestb";
+              $result = mysqli_query($con,$query);
+                        
+              while ($row = mysqli_fetch_array($result)){
+            ?>
+
+            <tr>
+              <td>
+                            <script type="text/javascript">
+                            document.write(pres_lname_js[counter]);
+                          
+                            </script>
+              </td>
+
+              <td>
+                            <script type="text/javascript">
+                            //var number = 123;
+                            //document.write(number)
+                            document.write(pres_disease_js_l[counter]);
+                          counter++;
+                            </script>
+              </td>
+            </tr>
+            <?php }
+          ?>
+</table>
+
+
+
+<!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2--><!--table2-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table2222" style="width:100%;display:none">
+
+<script>
+              Oyelami_sort(pres_disease_js_l, pres_lname_js );
+              cocktailSort(pres_disease_js_l, pres_lname_js);
+  </script>
+
+<tr>
+    <th>Patient's Last Name</th>
+    <th>Patient's Disease</th>
+  </tr>
+
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select lname from prestb";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+  ?>
+
+  <tr>
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pres_lname_js[counter]);
+                  
+                 
+                  </script>
+    </td>
+
+    <td>
+                  <script type="text/javascript">
+                  //var number = 123;
+                  //document.write(number)
+                  document.write(pres_disease_js_l[counter]);
+                 counter++;
+                  </script>
+    </td>
+  </tr>
+  <?php }
+?>
+</table>
+
+
+
+
+<!--table100-->
+<script>
+            var counter = 0;
+            var counterplus = 0;
+</script>
+<table id="table111100" style="width:100%; ">
+<tr>
+
+                    <th scope="col">Doctor</th>
                     <th scope="col">Patient ID</th>
                     <th scope="col">Appointment ID</th>
                     <th scope="col">First Name</th>
@@ -1276,28 +1530,31 @@ document.getElementById("btn1100").addEventListener("click", function(){
                     <th scope="col">Disease</th>
                     <th scope="col">Allergy</th>
                     <th scope="col">Prescription</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
-                    $query = "select * from prestb";
-                    $result = mysqli_query($con,$query);
-                    while ($row = mysqli_fetch_array($result)){
-                      $doctor = $row['doctor'];
-                      $pid = $row['pid'];
-                      $ID = $row['ID'];
-                      $fname = $row['fname'];
-                      $lname = $row['lname'];
-                      $appdate = $row['appdate'];
-                      $apptime = $row['apptime'];
-                      $disease = $row['disease'];
-                      $allergy = $row['allergy'];
-                      $pres = $row['prescription'];
+                  
+  </tr>
 
-                      
-                      echo "<tr>
+  <?php 
+    //defining conditions
+    $con=mysqli_connect("localhost","root","","myhmsdb");
+    global $con;
+    $query = "select * from prestb";
+    $result = mysqli_query($con,$query);
+              
+    while ($row = mysqli_fetch_array($result)){
+      $doctor = $row['doctor'];
+      $pid = $row['pid'];
+      $ID = $row['ID'];
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $appdate = $row['appdate'];
+      $apptime = $row['apptime'];
+      $disease = $row['disease'];
+      $allergy = $row['allergy'];
+      $pres = $row['prescription'];
+     
+
+      
+      echo "<tr>
                         <td>$doctor</td>
                         <td>$pid</td>
                         <td>$ID</td>
@@ -1309,15 +1566,57 @@ document.getElementById("btn1100").addEventListener("click", function(){
                         <td>$allergy</td>
                         <td>$pres</td>
                       </tr>";
-                    }
 
-                  ?>
-                </tbody>
-              </table>
-        <br>
-      </div>
-      </div>
-      </div>
+    }
+  ?>
+</table>
+
+
+<script>
+document.getElementById("btn1111").addEventListener("click", function(){
+
+  document.getElementById("table1111").style.display = "block";
+  document.getElementById("table2222").style.display = "none";//hide
+  document.getElementById("table111100").style.display = "none";//hide
+});
+document.getElementById("btn2222").addEventListener("click", function(){
+  document.getElementById("table2222").style.display = "block";
+  document.getElementById("table1111").style.display = "none";//hide
+  document.getElementById("table111100").style.display = "none";//hide
+});
+document.getElementById("btn111100").addEventListener("click", function(){
+  document.getElementById("table111100").style.display = "block";
+  document.getElementById("table1111").style.display = "none";//hide
+  document.getElementById("table2222").style.display = "none";//hide
+});
+</script>
+
+
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1469,7 +1768,7 @@ function Display7() {
 </script>
 
 
-
+<!--maybe an error to displayN()
 
 
 
@@ -1624,7 +1923,7 @@ function Display7() {
             var counter = 0;
             var counterplus = 0;
 </script>
-<table id="table11100" style="width:100%;display:none ">
+<table id="table11100" style="width:100%; ">
 <tr>
 
 

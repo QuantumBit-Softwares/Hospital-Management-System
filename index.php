@@ -15,6 +15,19 @@
      .form-control {
     border-radius: 0.75rem;
 }
+
+
+
+#loading {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background:#3736b2
+	url('assets/wecare4u.gif')
+	no-repeat center;
+	z-index: 99999;
+}
+
 </style>
 
 <script>
@@ -70,7 +83,24 @@ if(isset($_POST['docsub']))
 </head>
 
 <!------ Include the above in your HEAD tag ---------->
-<body>
+<body onload="timeFunction()">
+<div id = "loading"></div>
+<script>
+	var load = document.getElementById("loading");
+
+    
+    function timeFunction() {
+ setTimeout(function(){ loadfun(); }, 5000);
+}
+
+	function loadfun()
+	{
+    	
+		load.style.display = 'none';
+	}
+    
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
     <div class="container">
 

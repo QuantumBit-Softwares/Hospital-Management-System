@@ -28,21 +28,9 @@
 	z-index: 99999;
 }
 
-#preloader {
-  transition:1s ease;
-}
-
-#wrapper {
-  opacity:0;/*Remove display and hide opacity*/
- }
-
-
-
-
-
-
-
 </style>
+
+
 
 <script>
     var check = function() {
@@ -55,12 +43,17 @@
     document.getElementById('message').innerHTML = 'Not Matching';
   }
 }
+</script>
 
+<script>
 function alphaOnly(event) {
   var key = event.keyCode;
   return ((key >= 65 && key <= 90) || key == 8 || key == 32);
 };
+</script>
 
+
+<script>
 function checklen()
 {
     var pass1 = document.getElementById("password");  
@@ -70,9 +63,16 @@ function checklen()
   }  
 }
 
+</script>
+
+
+
+<script>
+
 
 if(isset($_POST['docsub']))
 {
+    
   $doctor=$_POST['doctor'];
   $dpassword=$_POST['dpassword'];
   $demail=$_POST['demail'];
@@ -86,13 +86,15 @@ if(isset($_POST['docsub']))
   $query="insert into doctb(username,password,email,spec,docFees,gender,docContact, docAddress)values('$doctor','$dpassword','$demail','$spec','$docFees','$dgender', '$docContact', '$docAddress')";
   $result=mysqli_query($con,$query);
   if($result)
-    {
-      echo "<script>alert('Doctor added successfully!');</script>";
-  }
-}
+      echo "<script>alert('Doctor added successfully!');</script>
+  
+
 
 
 </script>
+
+
+
 
 </head>
 
@@ -105,7 +107,6 @@ if(isset($_POST['docsub']))
     
     function timeFunction() {
  setTimeout(function(){ loadfun(); }, 5000);
- 
 }
 
 	function loadfun()

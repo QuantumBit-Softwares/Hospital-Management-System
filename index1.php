@@ -30,7 +30,82 @@ include("header.php");
 }
 
   </style>
+
+<style>
+
+
+.loader-section {
+    position: fixed;
+    top: 0;
+    width: 51%;
+    height: 100%;  
+    background: #222;
+    background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    z-index: 1000;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    
+    
+}
+
+.loader-section.section-left {
+    left: 0
+    
+}
+
+.loader-section.section-right {
+    right: 0
+}
+
+.panel_left {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    
+    -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    
+    
+}
+
+.panel_right {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transition: all .7s .3s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+}
+
+
+</style>
+
+
+
   <body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff); background-size: cover;">
+
+
+  <div id="panel_left" class='loader-section section-left'></div>
+  <div id="panel_right" class='loader-section section-right'></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+  
+      <script id="rendered-js" >
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    $("#panel_left").addClass("panel_left");
+    $("#panel_right").addClass("panel_right");
+
+  }
+};
+//# sourceURL=pen.js
+    </script>
+
+
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" >
     <div class="container">
 

@@ -50,6 +50,7 @@ if(isset($_POST['docsub1']))
     <!-- for my table design -->
     <link rel="stylesheet" href="css/tabledesign.css">
     <link rel="stylesheet" href="css/buttona.css">
+    <link rel="stylesheet" href="css/button.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -400,26 +401,21 @@ function Display1() {
 
 
       <div class="tab-pane fade" id="list-doc" role="tabpanel" aria-labelledby="list-home-list">
-      <div class="col-md-4">
-          <label>Search by:</label>
-        </div>
+     
 
         <div class="col-md-8">
-        <form class="form-group" action="doctorsearch.php" method="post">                            
-                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
-                                        <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="username" name="username">Doctor Name</option>
-                                        <option value="spec" name="spec">Specialization</option>
-                                        <option value="email" name="email">Email</option>
-                                        <option value="password" name="password">Password</option>
-                                        <option value="fees" name="fees">Fees</option>
-                                        <option value="gender" name="gender">Gender</option>
-                                        <option value="docContact" name="docContact">Contact</option>
-                                        <option value="docAddress" name="docAddress">Address</option>
-                                        </select>
-        <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>                                
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div>
-        </form>                
+                      
+         </div>
+
+         <div class = "frame">
+
+        <h2>Search by Doctor:</h2>
+        <button class="custom-btn btn-9" onclick="location.href='BinarySearch/A_doctor_search_name.php'" >Name</button>
+        <button class="custom-btn btn-10" onclick="location.href='BinarySearch/A_doctor_search_address.php'" >Address</button>
+        <button class="custom-btn btn-11" onclick="location.href='BinarySearch/A_doctor_search_email.php'" > Email</button>
+        <button class="custom-btn btn-14" onclick="location.href='BinarySearch/A_doctor_search_spec.php'">Department</button>
+        <!--<button class="custom-btn btn-14">Read More</button>-->
+   
          </div>
          <br><br>
 

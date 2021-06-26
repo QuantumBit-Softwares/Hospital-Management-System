@@ -905,28 +905,23 @@ function Display3() {
     </div>
                   -->
 
-
-    <div class="col-md-4">
-          <label>Search by:</label>
-        </div>
-
-        <div class="col-md-8">
-        <form class="form-group" action="patientsearch.php" method="post">                            
-                                    <select name="filteringSearch" class="form-control" id="filteringSearch" required="required">
-                                        <option value="head"  disabled selected>Filter Search by</option>
-                                        <option value="username" name="username">Patient ID</option>
-                                        <option value="spec" name="spec">First Name</option>
-                                        <option value="email" name="email">Last Name</option>
-                                        <option value="password" name="password">Gender</option>
-                                        <option value="fees" name="fees">Email</option>
-                                        <option value="gender" name="gender">Contact</option>
-                                        <option value="docContact" name="docContact">Password</option>
-                                        </select>
-        <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>                                
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div>
-        </form>                
-         </div>
-         <br><br>
+                  <div class="col-md-8">
+                      
+                      </div>
+             
+                      <div class = "frame">
+             
+                     <h2>Search by Patient:</h2>
+                     <button class="custom-btn btn-2" onclick="location.href='BinarySearch/A_pat_search_name.php'" >First N.</button>
+                     <button class="custom-btn btn-4" onclick="location.href='BinarySearch/A_pat_search_lname.php'" >Last N.</button>
+                     <button class="custom-btn btn-14" onclick="location.href='BinarySearch/A_pat_search_email.php'" > Email</button>
+           
+                     <!--<button class="custom-btn btn-14">Read More</button>-->
+                
+                      </div>
+                      <br><br>
+             
+             
 
 
 
@@ -1389,8 +1384,19 @@ function Display9() {
 
 <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
 
-       <div class="col-md-8"></div>
-  
+<div class="col-md-8">
+                      
+                      </div>
+             
+                      <div class = "frame">
+             
+                     <h2>Search by :</h2>
+                     <button class="custom-btn btn-8" onclick="location.href='BinarySearch/A_pres_search_disease.php'" >Disease</button>
+
+                     <!--<button class="custom-btn btn-14">Read More</button>-->
+                
+                      </div>
+                      <br><br>
       <!--  <div class="row">-->
 
 
@@ -1783,6 +1789,21 @@ function Display7() {
       </form>
     </div>
 
+    <div class="col-md-8">
+                      
+                      </div>
+             
+                      <div class = "frame">
+             
+                     <h2>Search by :</h2>
+                     <button class="custom-btn btn-5" onclick="location.href='BinarySearch/A_app_search_email.php'" >Client's Email</button>
+
+           
+                     <!--<button class="custom-btn btn-14">Read More</button>-->
+                
+                      </div>
+                      <br><br>
+             
 
 
 

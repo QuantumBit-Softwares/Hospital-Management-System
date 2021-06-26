@@ -175,7 +175,9 @@ function get_specs(){
     
   
     
-    
+        <link rel="stylesheet" href="css/tabledesign.css">
+    <link rel="stylesheet" href="css/buttona.css">
+    <link rel="stylesheet" href="css/button.css">
 
 
 
@@ -1099,6 +1101,20 @@ function Display14() {
 <div class="tab-pane fade" id="app-hist" role="tabpanel" aria-labelledby="list-pat-list">
  
 
+<div class="col-md-8">
+                      
+                      </div>
+             
+                      <div class = "frame">
+             
+                     <h2>Search by Doctor:</h2>
+                     <button class="custom-btn btn-2" onclick="location.href='BinarySearch/P_doct_search_name.php?pingFPAT=<?php echo $fname ?>&pingLPAT=<?php echo $lname ?>'" >Name</button>
+                     
+           
+                     <!--<button class="custom-btn btn-14">Read More</button>-->
+                
+                      </div>
+                      <br><br>
 
 
 <div class='title'>

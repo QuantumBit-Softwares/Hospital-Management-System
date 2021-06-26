@@ -60,9 +60,9 @@ body {
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #cc0088b6;
-    color: #383d41;
-    font-weight: 600;
+    background: #1b92f7;
+    color: #ffff;
+    font-weight: 500;
     width: 50%;
     cursor: pointer;
 }

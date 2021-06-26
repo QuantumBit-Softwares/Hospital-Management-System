@@ -83,7 +83,7 @@ background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%,
 
 
 
-  <body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff); background-size: cover;">
+  <body style="background: -webkit-linear-gradient(left, #3f5efb, #fc466b); background-size: cover;">
 
 
   <div id="panel_left" class='loader-section section-left'></div>
@@ -154,7 +154,7 @@ document.onreadystatechange = function () {
           <div class="card" style="font-family: 'IBM Plex Sans', sans-serif;">
             <div class="card-body">
               <center>
-                <i class="fa fa-hospital-o fa-3x" aria-hidden="true" style="color:#0062cc"></i>
+                <i class="fa fa-hospital-o fa-3x" aria-hidden="true" style="color:#cd4c8f"></i>
                 <br>
               <h3 style="margin-top: 10%">Patient Login</h3><br>
               <form class="form-group" method="POST" action="func.php">

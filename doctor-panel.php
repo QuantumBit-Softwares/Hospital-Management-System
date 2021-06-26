@@ -45,6 +45,8 @@ if(isset($_GET['cancel']))
     <script src="Algorithm\Doctor\Oyelami_sort.js"></script>
     <link rel="stylesheet" href="css/tabledesign.css">
     <link rel="stylesheet" href="css/buttona.css">
+ 
+    <link rel="stylesheet" href="css/button.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/css/setlocation.css"/>
@@ -382,7 +384,20 @@ function Display14() {
 
     <div class="tab-pane fade" id="list-app" role="tabpanel" aria-labelledby="list-home-list">
         
-
+    <div class="col-md-8">
+                      
+                      </div>
+             
+                      <div class = "frame">
+             
+                     <h2>Search by Patients:</h2>
+                     <button class="custom-btn btn-5" onclick="location.href='BinarySearch/D_patient_search_name.php?pingDOCT=<?php echo $doctor ?>'" >First Name</button>
+                     <button class="custom-btn btn-6" onclick="location.href='BinarySearch/D_patient_search_lname.php?pingDOCT=<?php echo $doctor ?>'" >Last Name</button>
+     
+                     <!--<button class="custom-btn btn-14">Read More</button>-->
+                
+                      </div>
+                      <br><br>
 
 
 

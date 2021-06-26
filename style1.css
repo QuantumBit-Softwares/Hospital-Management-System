@@ -99,3 +99,10 @@ body {
     color: #383d41;
 }
 
+.contact-form {
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+    border-top-right-radius: 10% 50%;
+    border-bottom-right-radius: 10% 50%;
+}

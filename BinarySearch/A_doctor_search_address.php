@@ -148,7 +148,7 @@ section{
 
 
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for doctor names.." title="Type in a number">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for doctor address.." title="Type in a number">
 
 <table id="myTable">
 

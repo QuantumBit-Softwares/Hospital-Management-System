@@ -87,7 +87,7 @@ if(isset($_POST['docsub1']))
 
   <style >
     .bg-primary {
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background: -webkit-linear-gradient(left, #3f5efb, #fc466b);
 }
 
 .col-md-4{

@@ -646,7 +646,7 @@ document.write("    <----------- Yes, ready for cocktail");
               
 
 <td>
-<form action="https://wecare4u.ml", target = "_blank" >
+<form action="landing/index.html", target = "_blank" >
 
     <input type = "submit"  class = "btn btn-success" value="Book Now" /> 
 </form>

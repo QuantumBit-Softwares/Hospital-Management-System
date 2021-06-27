@@ -194,7 +194,7 @@ function get_specs(){
 
   <style >
     .bg-primary {
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background: -webkit-linear-gradient(left, #3f5efb, #fc466b);
 }
 .list-group-item.active {
     z-index: 2;

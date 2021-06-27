@@ -27,5 +27,6 @@ $docContact = $_POST['docContact'];
 ?>
 
 <script>
-window.location.href = "http://localhost/Hospital-Management-System-master/index.php";
+  //changing the credentials login
+window.location.href = "/index.php";
 </script>

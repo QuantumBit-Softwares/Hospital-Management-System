@@ -217,15 +217,12 @@ section{
 
 <script>
 function myFunction() {
-
   var input, filter, table, tr, td, td1, i, txtValue, txtValue1; //declare var so it doesn't need to redeclare
   input = document.getElementById("myInput"); // search input by user (ex. one or 1)
   filter = input.value.toUpperCase(); // filtering input if string (one become ONE) and (two becomes TWO) and (aswfdf becomes ASWFDF)
   table = document.getElementById("myTable"); // reference myTable to javascript variable = table
-  
   tr = table.getElementsByTagName("tr"); //assign value of tr ex. [one][1] <-- one entity
 
-  
   
   //set to array
    txtValue = [];
@@ -239,14 +236,12 @@ function myFunction() {
   
        td = tr[i].getElementsByTagName("td")[5]; //search input by user (choose from one, two, three, four, four)
 
-       td1 = tr[i].getElementsByTagName("td")[5];  //search input by user (choose 1, 2, 3, 4, 4)
+     
 
         
         txtValue[i] = td.textContent || td.innerText; //assign txtValue to value of column 0 which is Names
         
-     	//txtValue1[i] = parseInt(td1.textContent) || parseInt(td1.innerText);  //assign txtValue to value of column 0 which is Number || if on I can find names
-          
-          txtValue1[i] = td1.textContent || td1.innerText;  //assign txtValue to value of column 0 which is Number || if on I can find number and names
+     
         
       }
       
@@ -261,30 +256,12 @@ function myFunction() {
   	let middle = Math.floor((start + end) / 2); // defining the middle 
     
     if ((txtValue[middle] === filter)) { //let filter = 3 || txtValue[2] = 1 and txtValue1[2] = 2
-    /*
-            // found the key
-            tr[middle].style.display = ""; 
-            tr[middle-1].style.display = "none"; 
-            tr[middle-2].style.display = "none"; 
-            
-            tr[middle+1].style.display = "none"; 
-            tr[middle+2].style.display = "none"; */
-//remove the layer that is not middle
-            
-            
-            
+   
+         
+      
             //propose solution this will add to the time complexity
             //but this is an displayer use case, not necessary to be
-            //a binary search responsibility
-         
-         
-         /*
-            document.write("Debugger: Value txtval:   " + txtValue[middle] + "<br>");
-             document.write("Debugger: Value txtval1:   " + txtValue1[middle] + "<br>");
-             
-         */
-         
-         var tracker = 0; //0 means it is not displayed yet //1 displayed already
+            //a binary search responsibility /start of block
           
             for (var z = 1; z<=tr.length-1 ; z++){
             
@@ -292,13 +269,12 @@ function myFunction() {
             
                     if ( (txtValue[z] == txtValue[middle])  )
 
-                                  { //wrong since iterator which make middle true, so we need to change middle after coming here
-                                 tr[middle].style.display = ""; //display row
-                                  // middle = 5654323254634563465433456898078678456456342345324256573425;
+                                  { 
+                                 tr[middle].style.display = ""; 
+                                  
                                   
 
-                                   } //correct close
-                    //else if ( (txtValue[z] != txtValue[middle] || (txtValue1[z] != txtValue1[middle]) ) {
+                                   }
 
                     else {
                                  tr[z].style.display = "none";
@@ -310,7 +286,7 @@ function myFunction() {
             
             //propose solution this will add to the time complexity
             //but this is an displayer use case, not necessary to be
-            //a binary search responsibility
+            //a binary search responsibility /end of block
             
     //}//end for if statement
     

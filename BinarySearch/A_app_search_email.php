@@ -326,11 +326,8 @@ function myFunction() {
   
   
  	 else {
-    	 tr[1].style.display = "none";
-         tr[2].style.display = "none";
-         tr[3].style.display = "none";
-         tr[4].style.display = "none";
-         tr[5].style.display = "none";
+    	// tr[1].style.display = "none";
+ 
     
     break;
     }

@@ -245,9 +245,11 @@ function myFunction() {
   
   
   /**************Starting binary search *************************/
+
   while (start<=end) {
-  
-  
+
+    var t0 = performance.now();
+    
   	let middle = Math.floor((start + end) / 2); // defining the middle 
     
     if ((txtValue[middle] === filter)) { //let filter = 3 || txtValue[2] = 1 and txtValue1[2] = 2
@@ -285,7 +287,10 @@ function myFunction() {
                                   { //wrong since iterator which make middle true, so we need to change middle after coming here
                                  tr[middle].style.display = ""; //display row
                                   // middle = 5654323254634563465433456898078678456456342345324256573425;
-                                  
+                                 
+                                  var t1 = performance.now();
+
+alert("Performance time: " + (t1 - t0));
 
                                    } //correct close
                     //else if ( (txtValue[z] != txtValue[middle] || (txtValue1[z] != txtValue1[middle]) ) {
@@ -349,6 +354,7 @@ function myFunction() {
     break;
     }
 
+
         
         
   
@@ -384,6 +390,7 @@ function myFunction() {
   }*/
  
 }
+
 </script>
 
 

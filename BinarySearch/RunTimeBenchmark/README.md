@@ -13,7 +13,7 @@ http://8acf2561da0a.ngrok.io/BinarySearch/RunTimeBenchmark
 <br>
 compare for example: 
 <br>
-binary 4500 vs linear 4500
+binary 4500 vs linear 4500 ( you are comparing binary 4500 with 4500 rows VS. linear 4500 with 4500 rows)
 <br>
 
 Tip:

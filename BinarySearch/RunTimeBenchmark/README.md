@@ -10,3 +10,13 @@ has 3000 rows
 ---- how to use ----
 <br>
 http://8acf2561da0a.ngrok.io/BinarySearch/RunTimeBenchmark
+<br>
+compare for example: 
+<br>
+binary 4500 vs linear 4500
+<br>
+
+Tip:
+<br>
+
+Use ```Zorine``` as the search term, since it is the end (n) 

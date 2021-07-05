@@ -89,12 +89,6 @@ This project is a fork of: https://github.com/kishan0725/Hospital-Management-Sys
 
 
 
-# Screenshots
-
-![Alt text](/Screenshots/Screenshot (254).png?raw=true)
-![ScreenShot](https://raw.github.com/asher-lab/Hospital-Management-System/Screenshots/Screenshot (254).png)
-
-![Image](../Screenshots/Screenshot (254).png?raw=true)
 
 
 &#xa0;

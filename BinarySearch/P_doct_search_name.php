@@ -182,7 +182,7 @@ $lname = $_GET['pingLPAT'];
 
 
 //$query = "select * from docttb ORDER BY email";
-    $query = "select * from appointmenttb where fname ='$fname' and lname ='$lname' ORDER BY 'doctor';" ;
+    $query = "select * from appointmenttb where fname ='$fname' and lname ='$lname' ORDER BY doctor;" ;
 
     $result = mysqli_query($con,$query);
     while ($row = mysqli_fetch_array($result)){

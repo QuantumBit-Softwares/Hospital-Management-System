@@ -1,12 +1,13 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="REAL_TIME_VERSION" />
+
 
   &#xa0;
 
   <!-- <a href="https://real_time_version.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">REAL_TIME_VERSION</h1>
+<h1 align="center">Hospital Management System</h1>
+
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/asher-lab/real_time_version?color=56BEB8">
@@ -44,25 +45,29 @@
 
 <br>
 
+![MyDrive Design](Screenshots/logo.png)
+
 ## :dart: About ##
 
-Describe your project
+A hospital management system that is used for online booking of appointments. It has registration for doctors
+and patients. An administrator (receptionist) can manage these users. The project is made via PHP and Javascript.
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+What makes this project unique?
+
+:heavy_check_mark: Feature 1; VideoConferencing, using [Talk](https://github.com/vasanthv/talk) <br>
+:heavy_check_mark: Feature 2; Calculate distance between two location. (Patient to Doctor) using Hervisine (calculates straight distance between the two). <br>
+:heavy_check_mark: Feature 3;  Show route via google map. <br>
+:heavy_check_mark: Feature 4;  Instead of the database sorting the data, we implemented a sorting algorithm called "Oyelami Sort" and "Cocktail Sort" Please refer to this 
+book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.pdf <br>
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- [XAMPP]
+- Uses PHP, MariaDB (MySQL), Javascript
 
 ## :white_check_mark: Requirements ##
 
@@ -72,27 +77,44 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/asher-lab/real_time_version
+$ git clone https://github.com/asher-lab/Hospital-Management-System.git
 
-# Access
-$ cd real_time_version
-
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
+# run via xampp
+download as zip then extract to htdocs directory in xampp
 ```
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is a fork of: https://github.com/kishan0725/Hospital-Management-System
 
 
-Made with :heart: by <a href="https://github.com/asher-lab" target="_blank">asher-lab</a>
+
+# Screenshots
+
+![Alt text](/Screenshots/Screenshot (254).png?raw=true)
+![ScreenShot](https://raw.github.com/asher-lab/Hospital-Management-System/Screenshots/Screenshot (254).png)
+
+![Image](../Screenshots/Screenshot (254).png?raw=true)
+
 
 &#xa0;
+
+
+# Screenshots
+![MyDrive Design](Screenshots/Screenshot%20(254).png)
+![MyDrive Design](Screenshots/Screenshot%20(255).png)
+![MyDrive Design](Screenshots/Screenshot%20(256).png)
+![MyDrive Design](Screenshots/Screenshot%20(257).png)
+![MyDrive Design](Screenshots/Screenshot%20(258).png)
+![MyDrive Design](Screenshots/Screenshot%20(259).png)
+![MyDrive Design](Screenshots/Screenshot%20(260).png)
+![MyDrive Design](Screenshots/Screenshot%20(261).png)
+![MyDrive Design](Screenshots/Screenshot%20(262).png)
+![MyDrive Design](Screenshots/Screenshot%20(263).png)
+![MyDrive Design](Screenshots/Screenshot%20(264).png)
+![MyDrive Design](Screenshots/Screenshot%20(265).png)
+![MyDrive Design](Screenshots/Screenshot%20(266).png)
+![MyDrive Design](Screenshots/Screenshot%20(267).png)
+
 
 <a href="#top">Back to top</a>

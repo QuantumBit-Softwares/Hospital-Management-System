@@ -61,7 +61,7 @@ What makes this project unique?
 :heavy_check_mark: Feature 3;  Show route via google map. <br>
 :heavy_check_mark: Feature 4;  Instead of the database sorting the data, we implemented a sorting algorithm called "Oyelami Sort" and "Cocktail Sort" Please refer to this 
 book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.pdf <br>
-:heavy_check_mark: Feature 4;  Instead of the database saearching the data, we implemented a searching algorithm called binary search <br>
+:heavy_check_mark: Feature 5;  Instead of the database saearching the data, we implemented a searching algorithm called binary search <br>
 
 book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.pdf <br>
 

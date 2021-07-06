@@ -64,8 +64,9 @@ book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.
 :heavy_check_mark: Feature 5;  Instead of the database saearching the data, we implemented a searching algorithm called binary search <br>
 
 
-book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.pdf <br>
-Why we employ client side technology? Important to read: https://github.com/QuantumBit-Softwares/Hospital-Management-System/blob/master/Plan%20for%20Algorithm%20Implementation.pdf <br>
+book as a study material: http://eprints.covenantuniversity.edu.ng/86/1/Olufemi.pdf <br><br>
+Why we employ client side technology? Important to read: https://github.com/QuantumBit-Softwares/Hospital-Management-System/blob/master/Plan%20for%20Algorithm%20Implementation.pdf <br><br>
+Paper: https://github.com/QuantumBit-Softwares/Hospital-Management-System/blob/master/Paper.pdf<br>
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
